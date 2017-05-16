@@ -22,6 +22,8 @@ class ViewController: NSViewController {
         }
     }
 
-
+    func run(_ sender: Any?) {
+        print("run button action")
+    }
 }
 
