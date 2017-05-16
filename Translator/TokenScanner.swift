@@ -21,7 +21,14 @@ class TokenScanner {
     private(set) var string: String
     
     /// The character position at which the receiver will begin its next scanning operation.
-    var scanLocation: Int
+    /// If new value out of the bounds of the string, scan location will skip it
+    var scanLocation: Int {
+        didSet {
+            if scanLocation >= self.string.characters.count {
+                scanLocation = oldValue
+            }
+        }
+    }
     
     /// Flag that indicates whether the receiver has exhausted all significant characters.
     /// true if the receiver has exhausted all significant characters in its string, otherwise false.
@@ -51,11 +58,10 @@ class TokenScanner {
         self.scanLocation = 0
         self.tokensToBeSkipped = tokensToBeSkipped
     }
-}
 
 
-// MARK: - Public
-extension TokenScanner {
+    // MARK: - Public
+
     
     /// Range from scan location to the end of the string
     var scanRange: Range<String.Index> {
