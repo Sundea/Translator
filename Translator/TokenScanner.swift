@@ -24,7 +24,7 @@ class TokenScanner {
     /// If new value out of the bounds of the string, scan location will skip it
     var scanLocation: Int {
         didSet {
-            if scanLocation >= self.string.characters.count {
+            if scanLocation > self.string.characters.count {
                 scanLocation = oldValue
             }
         }
@@ -34,7 +34,7 @@ class TokenScanner {
     /// true if the receiver has exhausted all significant characters in its string, otherwise false.
     /// If only characters from the set to be skipped remain, returns false.
     var isAtEnd: Bool {
-        return scanLocation == string.characters.count - 1
+        return scanLocation >= string.characters.count - 1
     }
     
     /// The set of tokens that will skipped by next() -> String? method
@@ -79,6 +79,18 @@ class TokenScanner {
     /// - Returns: token if the receiver finds a valid token, othervise nil
     func scanNext() -> String? {
         return string
+    }
+    
+    
+    
+    /// Checkes if token contains in set to be skipped, or not
+    ///
+    /// - Parameter token: token to check
+    /// - Returns: true if you shouldn't return it, otherwise - false. 
+    ///   If tokens to be skipped set is empty - returns false
+    func shouldSkip(_ token: String) -> Bool {
+        guard let skippedSet = tokensToBeSkipped else { return false }
+        return skippedSet.contains(token)
     }
 }
 
