@@ -23,6 +23,12 @@ class TokenScanner {
     /// The character position at which the receiver will begin its next scanning operation.
     var scanLocation: Int
     
+    /// Flag that indicates whether the receiver has exhausted all significant characters.
+    /// true if the receiver has exhausted all significant characters in its string, otherwise false.
+    /// If only characters from the set to be skipped remain, returns false.
+    var isAtEnd: Bool {
+        return scanLocation == string.characters.count - 1
+    }
     
     /// The set of tokens that will skipped by next() -> String? method
     let tokensToBeSkipped: Set<String>?
