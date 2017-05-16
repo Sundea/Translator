@@ -673,27 +673,25 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="eea-MD-kCL"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="TZU-o2-100"/>
-                                <toolbarItem implicitItemIdentifier="58594548-ABE6-44F3-A8CA-E1FC19DEE526" label="" paletteLabel="Run" id="lpK-Gx-Awg">
+                                <toolbarItem implicitItemIdentifier="6C99831C-AD5D-4BE4-A38E-81B29646851B" label="Run" paletteLabel="Run" image="Run" id="8JW-l7-XFz">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="34" height="28"/>
-                                    <size key="maxSize" width="100" height="28"/>
-                                    <segmentedControl key="view" verticalHuggingPriority="750" id="2ji-8O-icO">
-                                        <rect key="frame" x="0.0" y="14" width="45" height="28"/>
+                                    <size key="minSize" width="50" height="32"/>
+                                    <size key="maxSize" width="50" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="ruI-Bp-MpA">
+                                        <rect key="frame" x="0.0" y="14" width="50" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="momentary" id="alk-x9-5di">
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="Run" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k8B-l6-Pr1">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
-                                            <segments>
-                                                <segment image="Run" width="32"/>
-                                            </segments>
-                                        </segmentedCell>
-                                    </segmentedControl>
-                                    <connections>
-                                        <action selector="run:" target="Oky-zY-oP4" id="q8R-YN-TWf"/>
-                                    </connections>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="run:" target="Oky-zY-oP4" id="Km4-eZ-5TE"/>
+                                        </connections>
+                                    </button>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="lpK-Gx-Awg"/>
+                                <toolbarItem reference="8JW-l7-XFz"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
@@ -724,7 +722,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="463" height="268"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <size key="maxSize" width="480" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
@@ -747,6 +745,9 @@
                             <constraint firstAttribute="trailing" secondItem="gjj-B4-gec" secondAttribute="trailing" id="vMG-zI-cWH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="code" destination="cKG-Wa-vZD" id="VPc-Of-EJ1"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
