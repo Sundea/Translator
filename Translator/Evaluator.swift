@@ -8,12 +8,6 @@
 
 import Foundation
 
-enum TokenType {
-    case identifierType
-    case terminalType
-    case constantType
-}
-
 class Evaluator {
     
     static let identifierPattern = "[A-Za-z]\\w*"
@@ -36,11 +30,11 @@ class Evaluator {
         var result: TokenType?
         
         if isTerminal(token) {
-            result = .terminalType
+            result = .terminal
         } else if isIdentifier(token) {
-            result = .identifierType
+            result = .identifier
         } else if isConstant(token) {
-            result = .constantType
+            result = .constant
         }
         
         return result

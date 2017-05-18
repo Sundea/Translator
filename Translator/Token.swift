@@ -38,7 +38,6 @@ struct TextPoint: Hashable, Equatable, CustomStringConvertible {
 }
 
 
-
 /// Represents token
 class Token: Hashable, Equatable, CustomStringConvertible {
     
