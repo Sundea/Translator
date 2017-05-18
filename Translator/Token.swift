@@ -54,7 +54,7 @@ class Token: Hashable, Equatable, CustomStringConvertible {
     /// - Parameters:
     ///   - content: token text repsentation
     ///   - position: token position
-    init(_ content: String, position: TextPoint) {
+    init(_ content: String, _ position: TextPoint) {
         self.content = content
         self.position = position
     }
