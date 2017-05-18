@@ -9,7 +9,10 @@
 import Foundation
 
 extension String {
-
+    
+    var range: NSRange {
+        return NSMakeRange(0, utf16.count)
+    }
     
     /// Returns a string object containing the characters of the String that lie within a given range.
     ///

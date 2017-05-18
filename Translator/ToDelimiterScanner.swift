@@ -19,7 +19,6 @@ class ToDelimiterScanner: TokenScanner {
     
     // MARK: Properties
     
-    
     /// Regex used to find positions of delimiters in given string
     let delimiterRegex: NSRegularExpression
     
