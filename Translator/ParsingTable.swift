@@ -13,7 +13,7 @@ import Foundation
 ///
 /// - conflict: represents conflict situation between keys and associated value
 enum ParsingTableError: Error, CustomStringConvertible {
-    case conflict(left: ParsingTableHashable, right: ParsingTableHashable, oldRelation: Relation, newRelation: Relation)
+    case conflict(left: ParsingTableToken, right: ParsingTableToken, oldRelation: Relation, newRelation: Relation)
     
     var description: String {
         var result: String
@@ -47,6 +47,8 @@ struct ParsingTable {
     /// Describes row in parsing table. Key is right token (column Token) in relation, value is relation.
     fileprivate typealias Row = [String: Relation]
     
+    
+    // MARK: Properties
 
     /// Container for values
     fileprivate var dictionary = [String: Row]()
@@ -61,7 +63,7 @@ struct ParsingTable {
     ///   - rightKey: right token in relation
     /// - Returns: The value associated with `keys` if `keys` are in the table;
     ///   otherwise, `nil`.
-    subscript(rowKey: ParsingTableHashable, columnKey: ParsingTableHashable) -> Relation? {
+    subscript(rowKey: ParsingTableToken, columnKey: ParsingTableToken) -> Relation? {
         get {
             return value(for: rowKey, columnKey)
         }
@@ -75,9 +77,9 @@ struct ParsingTable {
     ///   - columnKey: right token in relation
     /// - Returns: The value associated with `keys` if `keys` are in the table;
     ///   otherwise, `nil`.
-    func value(for rowKey: ParsingTableHashable, _ columnKey: ParsingTableHashable) -> Relation? {
-        guard let row = dictionary[rowKey.parsingTableKey],
-            let value = row[columnKey.parsingTableKey]
+    func value(for rowKey: ParsingTableToken, _ columnKey: ParsingTableToken) -> Relation? {
+        guard let row = dictionary[rowKey.key],
+            let value = row[columnKey.key]
             else { return nil }
         
         return value
@@ -96,18 +98,18 @@ struct ParsingTable {
     ///   - rightKey: right token in relation
     /// - Throws: If threre is an element is already contained in table for given keys, this
     ///   method throws `ParsingTableError.confict(...)`.
-    mutating func insert(value: Relation?, for rowKey: ParsingTableHashable, _ columnKey: ParsingTableHashable) throws {
+    mutating func insert(value: Relation?, for rowKey: ParsingTableToken, _ columnKey: ParsingTableToken) throws {
         
-        var row = dictionary[rowKey.parsingTableKey] ?? Row()
+        var row = dictionary[rowKey.key] ?? Row()
         
-        if let oldRelation = row[rowKey.parsingTableKey], let newRelation = value {
+        if let oldRelation = row[rowKey.key], let newRelation = value {
             throw ParsingTableError.conflict(left: rowKey, right: columnKey, oldRelation: oldRelation, newRelation: newRelation)
         }
         
-        row[columnKey.parsingTableKey] = value
+        row[columnKey.key] = value
         
         if row.isEmpty {
-            dictionary.removeValue(forKey: rowKey.parsingTableKey)
+            dictionary.removeValue(forKey: rowKey.key)
         }
     }
 
@@ -118,13 +120,13 @@ struct ParsingTable {
     ///   - rowKey: left token in relation
     ///   - columnKey: right token in relation
     /// - Returns: removed value; otherwise, `nil`
-    mutating func removeValue(for rowKey: ParsingTableHashable, columnKey: ParsingTableHashable) -> Relation? {
-        guard var row = dictionary[rowKey.parsingTableKey],
-            let value = row.removeValue(forKey: columnKey.parsingTableKey)
+    mutating func removeValue(for rowKey: ParsingTableToken, columnKey: ParsingTableToken) -> Relation? {
+        guard var row = dictionary[rowKey.key],
+            let value = row.removeValue(forKey: columnKey.key)
             else { return nil }
         
         if row.isEmpty {
-            dictionary.removeValue(forKey: rowKey.parsingTableKey)
+            dictionary.removeValue(forKey: rowKey.key)
         }
         
         return value

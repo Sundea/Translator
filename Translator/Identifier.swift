@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Identifier: Token, ParsingTableHashable {
+class Identifier: Token, ParsingTableToken {
     
-    // MARK: - ParsingTableHashable
+    // MARK: - ParsingTableToken
     
-    var parsingTableKey: String {
+    var key: String {
         return "@Identifier"
     }
     

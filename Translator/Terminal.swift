@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Terminal: Token, ParsingTableHashable {
+class Terminal: Token, ParsingTableToken {
     
-    // MARK: - ParsingTableHashable
+    // MARK: - ParsingTableToken
     
-    var parsingTableKey: String {
+    var key: String {
         return self.content
     }
 }

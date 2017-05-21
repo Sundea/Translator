@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ParsingTableHashable {
+protocol ParsingTableToken {
     
-    var parsingTableKey: String { get }
+    var key: String { get }
 }

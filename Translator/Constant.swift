@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Constant: Token, ParsingTableHashable {
+class Constant: Token, ParsingTableToken {
     
-    // MARK: - ParsingTableHashable
+    // MARK: - ParsingTableToken
     
-    var parsingTableKey: String {
+    var key: String {
         return "@Constant"
     }
 }
