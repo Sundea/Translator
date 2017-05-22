@@ -43,7 +43,7 @@ extension Token {
                 break
             }
         } else {
-            token = Token(content, position)
+            token = UnknownToken(content, position)
         }
         
         return token
