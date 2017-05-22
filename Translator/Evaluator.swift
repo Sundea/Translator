@@ -80,8 +80,8 @@ class Evaluator {
     /// - Returns: *true* if token fully matches the regex, otherwise *false*.
     func check(_ token: String, by regex: NSRegularExpression) -> Bool {
         let range = token.range
-        
-        let match = identifierRegex.rangeOfFirstMatch(in: token, range: range)
+
+        let match = regex.rangeOfFirstMatch(in: token, range: range)
         return NSEqualRanges(match, range)
     }
 }
