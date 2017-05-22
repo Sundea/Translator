@@ -10,10 +10,11 @@ import Foundation
 
 class Lexer {
     
-    let evaluator: Evaluator
-    let scanner: TokenScanner
-    var line: Int
-    var previousLineCount: Int
+    private let evaluator: Evaluator
+    private let scanner: TokenScanner
+    private var line: Int
+    private var previousLineCount: Int
+    private(set) lazy var result = [Token]()
     
     init(_ code: String) {
         self.evaluator = Evaluator()
@@ -22,27 +23,35 @@ class Lexer {
         self.previousLineCount = 0
     }
     
-    func produce() -> [Token] {
-        var result = [Token]()
+    
+    func produce() {
+
+        let queue = DispatchQueue(label: "com.translator.lexer", qos: .userInitiated)
+        let dipatchGroup = DispatchGroup()
+        while let tokenContent = scanner.scanNext() {
         
-        while !scanner.isAtEnd {
-            if let tokenContent = scanner.scanNext() {
-                
-                let tokenEndChar = scanner.scanLocation - previousLineCount
-                let tokenStartChar = tokenEndChar - tokenContent.characters.count + 1
-                let position = TextPoint(line: line, character: tokenStartChar)
-                let type = evaluator.evaluate(tokenContent)
-                
-                if tokenContent == "\n" {
-                    line += 1
-                    previousLineCount = scanner.scanLocation
-                }
-                
+            let position = self.position(to: scanner.scanLocation, for: tokenContent)
+            let type = evaluator.evaluate(tokenContent)
+            
+            queue.async(group: dipatchGroup) {
                 let token = Token.makeToken(with: tokenContent, in: position, by: type)
-                result.append(token)
+                self.result.append(token)
             }
         }
         
-        return result
+        dipatchGroup.wait()
+    }
+    
+    func position(to scanLocation: Int, for token: String) -> TextPoint {
+        let tokenEndChar = scanLocation - previousLineCount
+        let tokenStartChar = tokenEndChar - token.characters.count + 1
+        let position = TextPoint(line: line, character: tokenStartChar)
+        
+        if token == "\n" {
+            line += 1
+            previousLineCount = scanner.scanLocation
+        }
+        
+        return position
     }
 }
