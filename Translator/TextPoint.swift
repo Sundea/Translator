@@ -36,3 +36,24 @@ struct TextPoint: Hashable, Equatable, CustomStringConvertible {
         return lhs.line == rhs.line && lhs.character == rhs.character
     }
 }
+
+
+// MARK: - Comparable
+extension TextPoint: Comparable {
+    
+    static func <(lhs: TextPoint, rhs: TextPoint) -> Bool {
+        return (lhs.line == rhs.line) ? lhs.character < rhs.character : lhs.line < rhs.line
+    }
+    
+    static func <=(lhs: TextPoint, rhs: TextPoint) -> Bool {
+        return (lhs.line == rhs.line) ? lhs.character <= rhs.character : lhs.line < rhs.line
+    }
+    
+    static func >=(lhs: TextPoint, rhs: TextPoint) -> Bool {
+        return (lhs.line == rhs.line) ? lhs.character >= rhs.character : lhs.line > rhs.line
+    }
+    
+    static func >(lhs: TextPoint, rhs: TextPoint) -> Bool {
+        return (lhs.line == rhs.line) ? lhs.character > rhs.character : lhs.line > rhs.line
+    }
+}
