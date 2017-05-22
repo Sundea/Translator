@@ -34,7 +34,7 @@ class TokenScanner {
     /// true if the receiver has exhausted all significant characters in its string, otherwise false.
     /// If only characters from the set to be skipped remain, returns false.
     var isAtEnd: Bool {
-        return scanLocation >= string.characters.count - 1
+        return scanLocation >= string.characters.count
     }
     
     /// The set of tokens that will skipped by next() -> String? method
