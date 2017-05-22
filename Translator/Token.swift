@@ -33,7 +33,7 @@ class Token: Hashable, Equatable, CustomStringConvertible {
     // MARK: - CustomStringConvertible
     
     var description: String {
-        return "\(position) \(content)"
+        return "\(position)   \(content)"
     }
     
     
