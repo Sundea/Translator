@@ -34,8 +34,8 @@ enum ParsingTableError: Error, CustomStringConvertible {
 /// - moreThan: left token more than right
 /// - equal: left token equal right
 enum Relation: String {
-    case lessThan = "•>"
-    case moreThan = "<•"
+    case lessThan = "<•"
+    case moreThan = "•>"
     case equal = "≐"
 }
 
@@ -102,7 +102,7 @@ struct ParsingTable {
         
         var row = dictionary[rowKey.key] ?? Row()
         
-        if let oldRelation = row[rowKey.key], let newRelation = value {
+        if let oldRelation = row[rowKey.key], let newRelation = value, oldRelation != newRelation {
             throw ParsingTableError.conflict(left: rowKey, right: columnKey, oldRelation: oldRelation, newRelation: newRelation)
         }
         
@@ -110,6 +110,8 @@ struct ParsingTable {
         
         if row.isEmpty {
             dictionary.removeValue(forKey: rowKey.key)
+        } else {
+            dictionary[rowKey.key] = row
         }
     }
 
