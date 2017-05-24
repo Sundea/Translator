@@ -12,9 +12,12 @@ class Lexer {
     
     fileprivate let evaluator: Evaluator
     fileprivate let scanner: TokenScanner
-    fileprivate var line: Int
-    fileprivate var previousLineCount: Int
-    fileprivate(set) lazy var result = [Token]()
+    
+    // Count of current scanner line position
+    private var line: Int
+    
+    /// Count of characters in previous line
+    private var previousLineCount: Int
     
     
     init(_ code: String) {
@@ -24,51 +27,40 @@ class Lexer {
         self.previousLineCount = 0
     }
     
+    
+    // MARK: - Public
+    
+    /// All tokens produced by scanner
+    fileprivate(set) lazy var result = [Token]()
+    
+    
     /// Return lexer level mistakes sorted by position.
     /// If you want to override this property, don't forget to sort by postition
-    var mistakes: [LexerMistake] {
-        var mistakes = [LexerMistake]()
+    var mistakes: [Mistake] {
+        var mistakes = [Mistake]()
         let unknownTokens = result.filter() { $0 is UnknownToken } as! [UnknownToken]
-        unknownTokens.forEach() { mistakes.append(UnknownTokenMistake($0)) }
+        unknownTokens.forEach() { mistakes.append(UnknownTokenMistake($0.position, $0.content)) }
         return mistakes
     }
     
-    /// Calculates position of token in the text
-    ///
-    /// - Parameters:
-    ///   - cursorLocation: current scanner location, simply position of last character of the token
-    ///   - token: text representation
-    /// - Returns: token position in the text
-    fileprivate func position(to cursorLocation: Int, for token: String) -> TextPoint {
-        let tokenEndChar = cursorLocation - previousLineCount
-        let tokenStartChar = tokenEndChar - token.characters.count + 1
-        let position = TextPoint(line: line, character: tokenStartChar)
-        
-        if token == "\n" {
-            line += 1
-            previousLineCount = scanner.scanLocation
-        }
-        
-        return position
-    }
-}
-
-
-
-// MARK: - Public
-extension Lexer {
     
+    /// Returns all identifiers from result
     var identifiers: [Identifier] {
         return result.filter() { $0 is Identifier } as! [Identifier]
     }
     
+    
+    /// Returns all terminals from result
     var terminals: [Terminal] {
         return result.filter() { $0 is Terminal } as! [Terminal]
     }
     
+    
+    /// Returns all constants from result
     var constants: [Constant] {
         return result.filter() { $0 is Constant } as! [Constant]
     }
+    
     
     /// Starts to scan. You should invoke this method before getting result property.
     func scan() {
@@ -87,5 +79,25 @@ extension Lexer {
         }
         
         dipatchGroup.wait()
+    }
+    
+    
+    /// Calculates position of token in the text
+    ///
+    /// - Parameters:
+    ///   - cursorLocation: current scanner location, simply position of last character of the token
+    ///   - token: text representation
+    /// - Returns: token position in the text
+    fileprivate func position(to cursorLocation: Int, for token: String) -> TextPoint {
+        let tokenEndChar = cursorLocation - previousLineCount
+        let tokenStartChar = tokenEndChar - token.characters.count + 1
+        let position = TextPoint(line: line, character: tokenStartChar)
+        
+        if token == "\n" {
+            line += 1
+            previousLineCount = scanner.scanLocation
+        }
+        
+        return position
     }
 }
