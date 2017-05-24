@@ -12,10 +12,10 @@ class MyLangLexer: Lexer {
     
     // MARK: - Override
     
-    override var mistakes: [LexerMistake] {
+    override var mistakes: [Mistake] {
         var mistakes = super.mistakes
-        undeclared.forEach { mistakes.append(UndeclaredVariableMistake($0)) }
-        redeclared.forEach { mistakes.append(RedeclaredVariableMistake($0)) }
+        undeclared.forEach { mistakes.append(UndeclaredIdentifierMistake($0.position, $0.content)) }
+        redeclared.forEach { mistakes.append(RedeclaredIdentifierMistake($0.position, $0.content)) }
         mistakes.sort(by: <)
         
         return mistakes
@@ -73,7 +73,7 @@ class MyLangLexer: Lexer {
         if let index = result.index(where:  { token in token.content == string }) {
             let slice = result.dropFirst(index)
             var iterator = slice.makeIterator()
-            while let next = iterator.next(), next.content != "\n"  {
+            while let next = iterator.next(), next.content != "\\n"  {
                 if let identifier = next as? Identifier {
                     declared.append(identifier)
                 }
