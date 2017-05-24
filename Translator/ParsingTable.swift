@@ -28,16 +28,7 @@ enum ParsingTableError: Error, CustomStringConvertible {
 }
 
 
-/// Describes relation between two tokens in single order used by predictive parsing table
-///
-/// - lessThan: left token less than right
-/// - moreThan: left token more than right
-/// - equal: left token equal right
-enum Relation: String {
-    case lessThan = "<•"
-    case moreThan = "•>"
-    case equal = "≐"
-}
+
 
 
 
@@ -50,8 +41,23 @@ struct ParsingTable {
     
     // MARK: Properties
 
+    let startEndToken = Terminal("#", TextPoint(line: Int.max, character: Int.max))
+    
     /// Container for values
     fileprivate var dictionary = [String: Row]()
+    fileprivate var rules: [String: [[String]]]
+    
+    init(_ rules: [String: [[String]]]) {
+        self.rules = rules
+    }
+    
+    
+    // MARK: - CustomStringConvertible
+    
+    var description: String {
+        return dictionary.description
+    }
+    
     
     
     // MARK: - Public
@@ -102,7 +108,7 @@ struct ParsingTable {
         
         var row = dictionary[rowKey.key] ?? Row()
         
-        if let oldRelation = row[rowKey.key], let newRelation = value, oldRelation != newRelation {
+        if let oldRelation = row[columnKey.key], let newRelation = value, oldRelation != newRelation {
             throw ParsingTableError.conflict(left: rowKey, right: columnKey, oldRelation: oldRelation, newRelation: newRelation)
         }
         
@@ -133,15 +139,19 @@ struct ParsingTable {
         
         return value
     }
-}
-
-
-
-// MARK: - CustomStringConvertible
-extension ParsingTable: CustomStringConvertible {
     
-    var description: String {
-        return dictionary.description
+    
+    func nonTerminal(for sequence: [String]) -> Key? {
+        var result: Key?
+    
+        for (key, rule) in rules {
+            if rule.contains(where: { $0 == sequence }) {
+                result = Key(token: key)
+                break
+            }
+        }
+        
+        return result
     }
 }
 
@@ -163,7 +173,11 @@ extension ParsingTable {
             
             jsonDict.setValue(jsonrowDict, forKey: rowKey)
         }
-        return jsonDict
+        let jsonRules = rules as NSDictionary
+        let json = NSMutableDictionary()
+        json.setValue(jsonRules, forKey: "Rules Dict")
+        json.setValue(jsonDict, forKey: "Parsing Table")
+        return json
     }
     
     
@@ -172,8 +186,11 @@ extension ParsingTable {
     /// - Parameters:
     ///   - json: dictionary raw Parsing Table data
     init?(json: [String: Any]) {
-        guard let rawDict = json as? [String: [String: String]] else { return }
+        guard let rawDict = json["Parsing Table"] as? [String: [String: String]],
+        let rulesDict = json["Rules Dict"] as? [String: [[String]]]
+            else { return nil }
         
+        self.rules = rulesDict
         for (rowKey, rawrow) in rawDict {
             var row = [String: Relation]()
             
@@ -181,6 +198,7 @@ extension ParsingTable {
                 row[key] = Relation(rawValue: value)
             }
             dictionary[rowKey] = row
+            
         }
     }
 }
