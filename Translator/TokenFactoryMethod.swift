@@ -39,7 +39,8 @@ extension Token {
             case .identifier:
                 token = Identifier(content, position)
             case .terminal:
-                token = Terminal(content, position)
+                let termContent = content == "\n" ? "\\n" : content
+                token = Terminal(termContent, position)
                 break
             }
         } else {
