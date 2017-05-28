@@ -242,6 +242,31 @@
 			<string>&lt;expression1&gt;</string>
 		</array>
 		<array>
+			<string>&lt;expression&gt;</string>
+			<string>&gt;</string>
+			<string>&lt;expression1&gt;</string>
+		</array>
+		<array>
+			<string>&lt;expression&gt;</string>
+			<string>&lt;</string>
+			<string>&lt;expression1&gt;</string>
+		</array>
+		<array>
+			<string>&lt;expression&gt;</string>
+			<string>==</string>
+			<string>&lt;expression1&gt;</string>
+		</array>
+		<array>
+			<string>&lt;expression&gt;</string>
+			<string>&gt;=</string>
+			<string>&lt;expression1&gt;</string>
+		</array>
+		<array>
+			<string>&lt;expression&gt;</string>
+			<string>&lt;=</string>
+			<string>&lt;expression1&gt;</string>
+		</array>
+		<array>
 			<string>[</string>
 			<string>&lt;boolExpression1&gt;</string>
 			<string>]</string>
