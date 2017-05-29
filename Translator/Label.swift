@@ -26,7 +26,7 @@ class Label: ReversePolishElement, CustomStringConvertible {
     
     // MARK: - ReversePolishElement
     
-    var representation: String {
+    var stringValue: String {
         return description + ":"
     }
     

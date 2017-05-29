@@ -11,5 +11,5 @@ import Foundation
 protocol ReversePolishElement {
     
     /// Human-readable representation of reverse polish element
-    var representation: String { get }
+    var stringValue: String { get }
 }

@@ -24,7 +24,7 @@ class Jump: ReversePolishElement {
         self.label = label
     }
     
-    var representation: String {
+    var stringValue: String {
         return label.description + type.rawValue
     }
 }
