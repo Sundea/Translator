@@ -22,3 +22,11 @@ class Constant: Lexeme, ValueStorable {
         super.init(value.description)
     }
 }
+
+
+// MARK: - ReversePolishElement
+extension Constant: ReversePolishElement {
+    var stringValue: String {
+        return representation
+    }
+}

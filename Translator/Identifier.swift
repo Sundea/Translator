@@ -18,3 +18,13 @@ class Identifier: Lexeme, ValueAccesible {
         value = newValue
     }
 }
+
+
+
+// MARK: - ReversePolishElement
+extension Identifier: ReversePolishElement {
+    
+    var stringValue: String {
+        return self.representation
+    }
+}
