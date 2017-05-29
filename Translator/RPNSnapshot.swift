@@ -9,9 +9,11 @@
 import Foundation
 
 struct RPNSnaphot {
+    
     let input: String
     let output: String
     let stack: String
+    
     
     init(_ input: String, _ stack: String, _ output: String) {
         self.input = input
