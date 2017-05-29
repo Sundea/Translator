@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SimplePolishOperator: Terminal, ReversePolishOperator {
+class SimplePolishOperator: Terminal, ReversePolishOperator, ReversePolishElement {
     
     private(set) var stackPriority: Int
     
@@ -27,12 +27,9 @@ class SimplePolishOperator: Terminal, ReversePolishOperator {
         self.stackPriority = stackPriority
         super.init(representation)
     }
-}
-
-
-// MARK: - ReversePolishElement
-extension SimplePolishOperator: ReversePolishElement{
+    
     var stringValue: String {
         return rpn ?? representation
     }
 }
+

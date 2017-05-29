@@ -20,7 +20,7 @@ class RPNExpressionParser: RPNParser {
         return result
     }
     
-    override func customAction(_ operation: SimplePolishOperator) -> Bool {
+    override func customAppend(_ operation: SimplePolishOperator) -> Bool {
         if operation === OperatorPool.closeParenthesis {
             while let pop = magazine.pop(), pop != OperatorPool.openParenthesis {
                 output.append(pop)

@@ -25,6 +25,8 @@ class RPNParser {
     /// Tokens to conver into Reverse Polish Notation
     var input: Queue<Token>
     
+    lazy var labels = [Label]()
+    
     
     // MARK: - Lifecycle
     
@@ -48,16 +50,27 @@ class RPNParser {
                 operation = replace(operation, at: token.position)
                 if magazine.isEmpty {
                     magazine.push(operation)
-                } else if !customAction(operation) {
+                } else if !customAppend(operation) {
                     appendByPriority(operation)
                 }
                 snapshot()
             }
+            if let nestedParser = nestedParser() {
+                nestedParserWillWork()
+                nestedParser.parse()
+                merge(nestedParser)
+                nestedParserDidWork()
+                while let nextNestedParser = self.nestedParser() {
+                    nextNestedParser.parse()
+                    merge(nextNestedParser)
+                }
+            }
         }
         
+        magazineWillBecomeEmpty()
         popAll(to: nil)
         snapshot()
-        
+        print(output)
         return true
     }
     
@@ -128,7 +141,60 @@ class RPNParser {
         return operation
     }
     
-    func customAction(_ operation: SimplePolishOperator) -> Bool {
+    func customAppend(_ operation: SimplePolishOperator) -> Bool {
         return false
+    }
+    
+    func nestedParserWillWork() {
+        
+    }
+    
+    func nestedParserDidWork() {
+        
+    }
+    
+    func magazineWillBecomeEmpty() {
+        
+    }
+    
+    
+    func nestedParser() -> RPNParser? {
+        var result: RPNParser?
+        
+        if let front = input.front?.lexeme {
+            switch front {
+            case _ as Identifier:
+                var savedInput = input
+                let _ = input.dequeue()
+                if let terminal = input.dequeue()?.lexeme, terminal == OperatorPool.assignValue {
+                    result = RPNExpressionParser(&savedInput)
+                }
+                input = savedInput
+            default:
+                result = nil
+            }
+        }
+        
+        return result
+    }
+    
+    func merge(_ parser: RPNParser) {
+        input = parser.input
+        output.append(contentsOf: parser.output)
+        merge(parser.snapshots)
+    }
+    
+    func merge(_ snapshots: [RPNSnaphot]) {
+        if let last = self.snapshots.last {
+            for snapshot in snapshots {
+                let input = snapshot.input
+                let stack = last.stack + " " + snapshot.stack
+                let output = last.output + " " + snapshot.output
+                let shot = RPNSnaphot.init(input, stack, output)
+                self.snapshots.append(shot)
+            }
+        } else {
+            self.snapshots = snapshots
+        }
     }
 }
