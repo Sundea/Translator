@@ -12,11 +12,19 @@ class MyLangLexer: Lexer {
     
     // MARK: - Override
     
-    override var mistakes: [Mistake] {
-        var mistakes = super.mistakes
-        undeclared.forEach { mistakes.append(UndeclaredIdentifierMistake($0.position, $0.content)) }
-        redeclared.forEach { mistakes.append(RedeclaredIdentifierMistake($0.position, $0.content)) }
-        mistakes.sort(by: <)
+    override var mistakes: [Mistake]? {
+        var mistakes: [Mistake]?
+        if let superMistakes = super.mistakes {
+            mistakes = superMistakes
+        }
+        let undeclared = self.undeclared
+        let redeclared = self.redeclared
+        if !undeclared.isEmpty || !redeclared.isEmpty {
+            mistakes = mistakes ?? [Mistake]()
+            undeclared.forEach { mistakes!.append(UndeclaredIdentifierMistake($0)) }
+            redeclared.forEach { mistakes!.append(RedeclaredIdentifierMistake($0)) }
+            mistakes!.sort(by: <)
+        }
         
         return mistakes
     }
@@ -25,41 +33,35 @@ class MyLangLexer: Lexer {
     // MARK: - Private
     
     /// Returns undeclred identifiers
-    private var undeclared: [Identifier] {
+    private var undeclared: [Token] {
         let declared = self.declared
-        let undeclared = identifiers.filter { identifier in
-            return !declared.contains { $0.content == identifier.content }
+        
+        let identifiers = result.tokens(from: result.identifiers)
+        let undeclared = identifiers.filter { idn in
+            return !declared.contains(where: { decIdn in
+                return idn.lexeme === decIdn.lexeme
+            })
         }
+        
         return undeclared
     }
     
     
     /// Returns redeclared identifiers
-    private var redeclared: [Identifier] {
+    private var redeclared: [Token] {
         let declared = self.declared
-        let redeclared = afterKey.filter { !declared.contains($0) }
-        return redeclared
-    }
-    
-    
-    /// Returns correct declared identifiers (without redeclarated identifiers if they are in result)
-    private var declared: [Identifier] {
-        var declared =  [Identifier]()
-        let afterKeyIdentifiers = afterKey
-        for i in 0..<afterKeyIdentifiers.count {
-            if !declared.contains(where: { $0.content == afterKeyIdentifiers[i].content }) {
-                declared.append(afterKeyIdentifiers[i])
+        var unique = Set<Token>()
+        var redeclared = [Token]()
+        
+        for idn in declared {
+            if !unique.contains(where: { $0.lexeme === idn.lexeme } ) {
+                unique.insert(idn)
+            } else {
+                redeclared.append(idn)
             }
         }
-        return declared
-    }
-
-    
-    /// Returns all identifiers after `var` and `program` non-termianls
-    private var afterKey: [Identifier] {
-        let afterVar = getIdentifiers(after: "var")
-        let afterProgram = getIdentifiers(after: "program")
-        return afterProgram + afterVar
+        
+        return redeclared
     }
     
     
@@ -68,14 +70,24 @@ class MyLangLexer: Lexer {
     /// - Parameter string: start point of search
     /// - Returns: identifiers between given string and up to `\n` if there are;
     ///     otherwise - empty array
-    private func getIdentifiers(after string: String) -> [Identifier] {
-        var declared = [Identifier]()
-        if let index = result.index(where:  { token in token.content == string }) {
-            let slice = result.dropFirst(index)
+    private var declared: [Token] {
+        var declared = [Token]()
+        if let index = result.tokens.index(where: { token in token.lexeme.representation == "var" }) {
+            let slice = result.tokens.dropFirst(index)
             var iterator = slice.makeIterator()
-            while let next = iterator.next(), next.content != "\\n"  {
-                if let identifier = next as? Identifier {
-                    declared.append(identifier)
+            while let next = iterator.next(), next.lexeme.representation != ":"  {
+                if next.lexeme is Identifier {
+                    declared.append(next)
+                }
+            }
+        }
+        if let index = result.tokens.index(where: { token in token.lexeme.representation == "program" }) {
+            let slice = result.tokens.dropFirst(index)
+            var iterator = slice.makeIterator()
+            while let next = iterator.next(), next.lexeme.representation != "@"  {
+                if next.lexeme is Identifier {
+                    declared.append(next)
+                    break
                 }
             }
         }

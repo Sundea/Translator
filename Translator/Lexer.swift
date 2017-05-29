@@ -25,40 +25,25 @@ class Lexer {
         try! self.scanner = ToDelimiterScanner(code, Set(arrayLiteral: " "))
         self.line = 1
         self.previousLineCount = 0
+        self.result = TokenCollection()
     }
     
     
     // MARK: - Public
     
-    /// All tokens produced by scanner
-    fileprivate(set) lazy var result = [Token]()
+    var result: TokenCollection
+    
     
     
     /// Return lexer level mistakes sorted by position.
     /// If you want to override this property, don't forget to sort by postition
-    var mistakes: [Mistake] {
-        var mistakes = [Mistake]()
-        let unknownTokens = result.filter() { $0 is UnknownToken } as! [UnknownToken]
-        unknownTokens.forEach() { mistakes.append(UnknownTokenMistake($0.position, $0.content)) }
-        return mistakes
-    }
-    
-    
-    /// Returns all identifiers from result
-    var identifiers: [Identifier] {
-        return result.filter() { $0 is Identifier } as! [Identifier]
-    }
-    
-    
-    /// Returns all terminals from result
-    var terminals: [Terminal] {
-        return result.filter() { $0 is Terminal } as! [Terminal]
-    }
-    
-    
-    /// Returns all constants from result
-    var constants: [Constant] {
-        return result.filter() { $0 is Constant } as! [Constant]
+    var mistakes: [Mistake]? {
+        if !result.unknowns.isEmpty {
+            let unknownTokens = result.tokens(from: result.unknowns)
+            let mistakes = unknownTokens.map { UnknownTokenMistake($0) }
+            return mistakes
+        }
+        return nil
     }
     
     
@@ -72,9 +57,10 @@ class Lexer {
             let position = self.position(to: scanner.scanLocation, for: tokenContent)
             let type = evaluator.evaluate(tokenContent)
             
-            queue.async(group: dipatchGroup) {
-                let token = Token.makeToken(with: tokenContent, in: position, by: type)
-                self.result.append(token)
+            queue.async(group: dipatchGroup) { [unowned self] in
+                
+                let token = Lexeme.make(tokenContent, type: type)
+                self.result.append(token, at: position)
             }
         }
         
@@ -93,7 +79,7 @@ class Lexer {
         let tokenStartChar = tokenEndChar - token.characters.count + 1
         let position = TextPoint(line: line, character: tokenStartChar)
         
-        if token == "\n" {
+        if token == OperatorPool.newLine.representation {
             line += 1
             previousLineCount = scanner.scanLocation
         }

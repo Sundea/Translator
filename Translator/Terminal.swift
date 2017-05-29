@@ -8,11 +8,6 @@
 
 import Foundation
 
-class Terminal: Token, ParsingTableToken {
+class Terminal: Lexeme {
     
-    // MARK: - ParsingTableToken
-    
-    var key: String {
-        return self.content
-    }
 }

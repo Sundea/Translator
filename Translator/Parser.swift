@@ -12,14 +12,13 @@ class Parser {
     
     let parsingTable: ParsingTable
     
-    private lazy var stack: Stack<ParsingTableToken> = {
-        var stack = Stack<ParsingTableToken>()
-        stack.push(self.parsingTable.startEndToken)
-        return stack
-    }()
-    
-    
-    private var inputStream: Queue<ParsingTableToken>!
+    private lazy var stack = Stack<ParsingTableAccesible>()
+    private var inputStream: Queue<ParsingTableAccesible>!
+    var input: [Token]! {
+        didSet {
+            prepare()
+        }
+    }
     
     /// Logs
     lazy var snapshots = [ParserSnapshot]()
@@ -27,26 +26,22 @@ class Parser {
     /// Contains mistakes if there is, otherwise - empty array
     lazy var mistakes = [Mistake]()
     
-    var input: [ParsingTableToken]! {
-        didSet {
-            if let input = input {
-                var array = input
-                array.append(parsingTable.startEndToken)
-                inputStream = Queue<ParsingTableToken>(array)
-            }
-        }
-    }
-    
     
     init(_ parsingTable: ParsingTable) {
         self.parsingTable = parsingTable
     }
     
+    func prepare() {
+        stack.push(parsingTable.startEndToken as ParsingTableAccesible)
+        var inputs = input as [ParsingTableAccesible]
+        inputs.append(parsingTable.startEndToken)
+        inputStream = Queue<ParsingTableAccesible>(inputs)
+    }
     
     func parse() {
     
         while inputStream.count > 1 || stack.count > 2  {
-            if let input = inputStream.front, input.key != parsingTable.startEndToken.key {
+            if let input = inputStream.front, input.tableKey != parsingTable.startEndToken.tableKey {
                 if let relation = parsingTable[stack.top!, input] {
                     makeSnapshot(stack, relation, inputStream)
                     if relation != .moreThan  {
@@ -57,15 +52,15 @@ class Parser {
                     }
                 } else {
 //                    if !minimize() {
-                        let nextToken = input as! Token
+                        let nextLexeme = input as! Token
                         let index = self.input.index { key in
                             if let token = key as? Token {
-                                return token == nextToken
+                                return token == nextLexeme
                             }
                             return false
                         }
-                        let prev = self.input[self.input.index(before: index!)] as! Token
-                        let mistake = SyntaxMistake(nextToken.position, prev.content, nextToken.content)
+                        let prev = self.input[self.input.index(before: index!)]
+                        let mistake = SyntaxMistake(prev, nextLexeme)
                         mistakes.append(mistake)
                         return
 //                    }
@@ -83,20 +78,9 @@ class Parser {
         }
         
         
-        
-        
-        
-//        while !stack.isEmpty && stack.top?.key != "<root>" {
-//            makeSnapshot(stack, relation, inputStream)
-//            minimize()
-//        }
-        
-        
-        if let top = stack.top, top.key != "<root>" {
+        if let top = stack.top, top.tableKey != "<root>" {
             if let last = input.last as? Token {
-                let newPoint = TextPoint(line: last.position.line, character: last.position.character)
-                let mistake = UnexpectedEndOfFile(newPoint)
-                mistakes.append(mistake)
+                mistakes.append(UnexpectedEndOfFile(last))
             }
         }
     }
@@ -104,14 +88,13 @@ class Parser {
     private func minimize() -> Bool {
         var ruleCandidate = [String]()
         var isMinimized = false
-        while !stack.isEmpty && stack.top?.key != "<root>" {
+        while !stack.isEmpty && stack.top?.tableKey != "<root>" {
             let previous = stack.pop()!
-            ruleCandidate.append(previous.key)
+            ruleCandidate.append(previous.tableKey)
             
             if let next = stack.top {
                 if let relation = parsingTable.value(for: next, previous), relation == .lessThan {
                     if let minimized = parsingTable.nonTerminal(for: ruleCandidate.reversed()) {
-//                        makeSnapshot(stack, relation, inputStream)
                         stack.push(minimized)
                         isMinimized = true
                     }
@@ -123,7 +106,7 @@ class Parser {
         return isMinimized
     }
     
-    private func makeSnapshot(_ stack: Stack<ParsingTableToken>, _ relation: Relation, _ inputStream: Queue<ParsingTableToken>) {
+    private func makeSnapshot(_ stack: Stack<ParsingTableAccesible>, _ relation: Relation, _ inputStream: Queue<ParsingTableAccesible>) {
         let stackDescription = description(from: stack.array)
         let relationDescription = relation.description
         let inputStreamDescription = description(from: inputStream.array)
@@ -132,12 +115,12 @@ class Parser {
     }
     
     
-    private func description(from array:[ParsingTableToken]) -> String {
+    private func description(from array:[ParsingTableAccesible]) -> String {
         return array.reduce("") { result, next in
             if let next = next as? Token {
-                return "\(result) \(next.content)"
+                return "\(result) \(next.lexeme.representation)"
             } else {
-                return "\(result) \(next.key)"
+                return "\(result) \(next.tableKey)"
             }
         }
     }

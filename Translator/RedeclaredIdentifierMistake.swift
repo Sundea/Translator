@@ -10,7 +10,9 @@ import Foundation
 
 /// Repredents redeclared Identifer
 class RedeclaredIdentifierMistake: Mistake {
-    override var description: String {
-        return "\(position)    \(token!)    Redeclared variable."
+    
+    init(_ token: Token) {
+        let explanation = "Redeclared identifier `\(token.lexeme.representation)`"
+        super.init(explanation, token.position)
     }
 }

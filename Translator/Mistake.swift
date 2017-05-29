@@ -12,12 +12,11 @@ import Foundation
 /// Represent mistake on lexer level check
 class Mistake: CustomStringConvertible, Equatable, Hashable {
 
-    /// Incorrect token
-    let token: String?
     let position: TextPoint
+    let explanation: String
     
-    init(_ position: TextPoint, _ token: String? = nil) {
-        self.token = token
+    init(_ explanation: String, _ position: TextPoint) {
+        self.explanation = explanation
         self.position = position
     }
 
@@ -25,25 +24,21 @@ class Mistake: CustomStringConvertible, Equatable, Hashable {
     // MARK: - CustomStringConvertible
     
     var description: String {
-        return "\(position)    \(token ?? "")    Generic lexer error."
+        return "\(position)    \(explanation)"
     }
     
     
     // MARK: - Equtable
     
     static func ==(lhs: Mistake, rhs: Mistake) -> Bool {
-        return lhs.token == rhs.token
+        return lhs.description == rhs.description
     }
     
     
     // MARK: - Hashable
     
     var hashValue: Int {
-        var hash = position.hashValue
-        if let token = token {
-            hash = hash ^ token.hashValue
-        }
-        return hash
+        return position.hashValue ^ explanation.hashValue
     }
 }
 
@@ -66,5 +61,4 @@ extension Mistake: Comparable {
     static func >(lhs: Mistake, rhs: Mistake) -> Bool {
         return lhs.position > rhs.position
     }
-
 }

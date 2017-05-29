@@ -7,24 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F3FC6981ED47E5B00D60296 /* ParserSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FC6971ED47E5B00D60296 /* ParserSnapshot.swift */; };
+		6F3FC69A1ED4806900D60296 /* SyntaxMistake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FC6991ED4806900D60296 /* SyntaxMistake.swift */; };
+		6F3FC69C1ED4825C00D60296 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FC69B1ED4825C00D60296 /* Relation.swift */; };
+		6F3FC6A31ED4928700D60296 /* UnexpectedEndOfFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FC6A21ED4928700D60296 /* UnexpectedEndOfFile.swift */; };
+		6F3FC6A51ED4A89700D60296 /* UnknownTokenMistake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FC6A41ED4A89700D60296 /* UnknownTokenMistake.swift */; };
+		6F3FC6A71ED4A92200D60296 /* RedeclaredIdentifierMistake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FC6A61ED4A92200D60296 /* RedeclaredIdentifierMistake.swift */; };
+		6F3FC6AA1ED4A97400D60296 /* UndeclaredIdentifierMistake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FC6A91ED4A97400D60296 /* UndeclaredIdentifierMistake.swift */; };
+		6F3FC6AD1ED4AD0E00D60296 /* Parsing Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3FC6AC1ED4AD0E00D60296 /* Parsing Table.storyboard */; };
+		6F3FC6AF1ED4B15D00D60296 /* ParsingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FC6AE1ED4B15D00D60296 /* ParsingTableViewController.swift */; };
+		6F3FC6B11ED4B40B00D60296 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3FC6B01ED4B40B00D60296 /* Main.storyboard */; };
 		6F40F2FD1ECAA9360071C663 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40F2FC1ECAA9360071C663 /* AppDelegate.swift */; };
 		6F40F2FF1ECAA9360071C663 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40F2FE1ECAA9360071C663 /* ViewController.swift */; };
 		6F40F3011ECAA9360071C663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F40F3001ECAA9360071C663 /* Assets.xcassets */; };
-		6F40F3041ECAA9360071C663 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F40F3021ECAA9360071C663 /* Main.storyboard */; };
 		6F40F30F1ECAA9360071C663 /* TranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40F30E1ECAA9360071C663 /* TranslatorTests.swift */; };
 		6F55A8C91ED04F4200678C60 /* ParsingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F55A8C81ED04F4200678C60 /* ParsingTable.swift */; };
-		6F5955D71ED19E82000B8C21 /* ParsingTableKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955D61ED19E82000B8C21 /* ParsingTableKey.swift */; };
+		6F57F4961ED894F800760307 /* SimplePolishOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4951ED894F800760307 /* SimplePolishOperator.swift */; };
+		6F57F4981ED8951A00760307 /* ComplexPolishOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4971ED8951A00760307 /* ComplexPolishOperator.swift */; };
+		6F57F49A1ED8953A00760307 /* MyLangOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4991ED8953A00760307 /* MyLangOperators.swift */; };
+		6F57F49D1ED8A97500760307 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F49C1ED8A97500760307 /* Constant.swift */; };
+		6F57F49F1ED8A98D00760307 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F49E1ED8A98D00760307 /* Identifier.swift */; };
+		6F57F4A71ED8C77C00760307 /* TokenCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4A61ED8C77C00760307 /* TokenCollection.swift */; };
+		6F57F4A91ED8C8DF00760307 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4A81ED8C8DF00760307 /* Token.swift */; };
+		6F57F4AB1ED8CE8E00760307 /* LexemeFactoryMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4AA1ED8CE8E00760307 /* LexemeFactoryMethod.swift */; };
+		6F57F4B01ED8FD1200760307 /* TokenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4AF1ED8FD1200760307 /* TokenExtensions.swift */; };
+		6F57F4B31EDA0B4800760307 /* ReversePolishNotationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4B21EDA0B4800760307 /* ReversePolishNotationParser.swift */; };
+		6F57F4B51EDA0C1200760307 /* IfElseExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4B41EDA0C1200760307 /* IfElseExpressionParser.swift */; };
+		6F57F4B71EDA2E7000760307 /* MyTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4B61EDA2E7000760307 /* MyTranslator.swift */; };
+		6F57F4BB1EDA567200760307 /* Token Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F57F4BA1EDA567200760307 /* Token Table.storyboard */; };
+		6F57F4BD1EDA596700760307 /* AllTokensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4BC1EDA596700760307 /* AllTokensViewController.swift */; };
+		6F57F4BF1EDADA7F00760307 /* MarkKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4BE1EDADA7F00760307 /* MarkKeeper.swift */; };
+		6F57F4C11EDAE13600760307 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4C01EDAE13600760307 /* Transition.swift */; };
+		6F5955D71ED19E82000B8C21 /* ParsingTableAccesible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955D61ED19E82000B8C21 /* ParsingTableAccesible.swift */; };
+		6F5955D91ED19F02000B8C21 /* ParsingTableGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955D81ED19F02000B8C21 /* ParsingTableGenerator.swift */; };
+		6F5955DB1ED1D555000B8C21 /* language.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F5955DA1ED1D555000B8C21 /* language.plist */; };
+		6F5955DD1ED2FBD8000B8C21 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955DC1ED2FBD8000B8C21 /* Parser.swift */; };
+		6F5955E31ED30BE8000B8C21 /* MyLangLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955E21ED30BE8000B8C21 /* MyLangLexer.swift */; };
+		6F5955E51ED30D41000B8C21 /* UnknownLexeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955E41ED30D41000B8C21 /* UnknownLexeme.swift */; };
+		6F5955EB1ED36A4D000B8C21 /* Mistake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955EA1ED36A4D000B8C21 /* Mistake.swift */; };
+		6F5955ED1ED41C8E000B8C21 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955EC1ED41C8D000B8C21 /* Stack.swift */; };
+		6F5955EF1ED41EA0000B8C21 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955EE1ED41EA0000B8C21 /* Queue.swift */; };
+		6F5955F11ED42684000B8C21 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955F01ED42684000B8C21 /* Translator.swift */; };
+		6F7150E61ED892D100EE34DB /* ReversePolishOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7150E51ED892D100EE34DB /* ReversePolishOperator.swift */; };
+		6F7825DE1EDB7B02006B6276 /* WriteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825DD1EDB7B02006B6276 /* WriteParser.swift */; };
+		6F7825E01EDBF9EA006B6276 /* ParserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825DF1EDBF9EA006B6276 /* ParserController.swift */; };
+		6F7BC8E81ED6123000D3D801 /* ValueContainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BC8E71ED6123000D3D801 /* ValueContainter.swift */; };
+		6F7BC8EF1ED61BCB00D3D801 /* ExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BC8EE1ED61BCB00D3D801 /* ExpressionParser.swift */; };
+		6F7BC8F51ED6B28100D3D801 /* Reverse Polisch Notation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F7BC8F41ED6B28100D3D801 /* Reverse Polisch Notation.storyboard */; };
+		6F7BC8F71ED6B2A000D3D801 /* ReversePolishNotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BC8F61ED6B2A000D3D801 /* ReversePolishNotationViewController.swift */; };
 		6F9FC4ED1ECAACEB00E04376 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FC4EC1ECAACEB00E04376 /* MainWindowController.swift */; };
 		6F9FC4F21ECAB1BF00E04376 /* TokenScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FC4F11ECAB1BF00E04376 /* TokenScanner.swift */; };
 		6F9FC4F51ECAB20600E04376 /* ToDelimiterScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FC4F41ECAB20600E04376 /* ToDelimiterScanner.swift */; };
-		6FDCEC471ECDFCC4007C0011 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC461ECDFCC4007C0011 /* Identifier.swift */; };
-		6FDCEC491ECDFCE3007C0011 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC481ECDFCE3007C0011 /* Constant.swift */; };
 		6FDCEC4B1ECDFCEA007C0011 /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC4A1ECDFCEA007C0011 /* Terminal.swift */; };
-		6FDCEC4E1ECE290A007C0011 /* TokenFactoryMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC4D1ECE290A007C0011 /* TokenFactoryMethod.swift */; };
+		6FDCEC4E1ECE290A007C0011 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC4D1ECE290A007C0011 /* TokenType.swift */; };
 		6FDCEC501ECE3472007C0011 /* TextPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC4F1ECE3472007C0011 /* TextPoint.swift */; };
 		6FFD5F551ECAE50100A43188 /* StringNSrangeToRangeBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD5F541ECAE50100A43188 /* StringNSrangeToRangeBridge.swift */; };
 		6FFD5F571ECB13BD00A43188 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD5F561ECB13BD00A43188 /* Evaluator.swift */; };
-		6FFD5F591ECB29FB00A43188 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD5F581ECB29FB00A43188 /* Token.swift */; };
+		6FFD5F591ECB29FB00A43188 /* Lexeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD5F581ECB29FB00A43188 /* Lexeme.swift */; };
 		6FFD5F5F1ECB43E000A43188 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD5F5E1ECB43E000A43188 /* Lexer.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,28 +78,67 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F3FC6971ED47E5B00D60296 /* ParserSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserSnapshot.swift; sourceTree = "<group>"; };
+		6F3FC6991ED4806900D60296 /* SyntaxMistake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxMistake.swift; sourceTree = "<group>"; };
+		6F3FC69B1ED4825C00D60296 /* Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
+		6F3FC6A21ED4928700D60296 /* UnexpectedEndOfFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnexpectedEndOfFile.swift; sourceTree = "<group>"; };
+		6F3FC6A41ED4A89700D60296 /* UnknownTokenMistake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownTokenMistake.swift; sourceTree = "<group>"; };
+		6F3FC6A61ED4A92200D60296 /* RedeclaredIdentifierMistake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeclaredIdentifierMistake.swift; sourceTree = "<group>"; };
+		6F3FC6A91ED4A97400D60296 /* UndeclaredIdentifierMistake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndeclaredIdentifierMistake.swift; sourceTree = "<group>"; };
+		6F3FC6AC1ED4AD0E00D60296 /* Parsing Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Parsing Table.storyboard"; sourceTree = "<group>"; };
+		6F3FC6AE1ED4B15D00D60296 /* ParsingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingTableViewController.swift; sourceTree = "<group>"; };
+		6F3FC6B01ED4B40B00D60296 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6F40F2F91ECAA9360071C663 /* Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F40F2FC1ECAA9360071C663 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F40F2FE1ECAA9360071C663 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6F40F3001ECAA9360071C663 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6F40F3031ECAA9360071C663 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F40F3051ECAA9360071C663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F40F30A1ECAA9360071C663 /* TranslatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TranslatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F40F30E1ECAA9360071C663 /* TranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorTests.swift; sourceTree = "<group>"; };
 		6F40F3101ECAA9360071C663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F55A8C81ED04F4200678C60 /* ParsingTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingTable.swift; sourceTree = "<group>"; };
-		6F5955D61ED19E82000B8C21 /* ParsingTableKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingTableKey.swift; sourceTree = "<group>"; };
+		6F57F4951ED894F800760307 /* SimplePolishOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimplePolishOperator.swift; sourceTree = "<group>"; };
+		6F57F4971ED8951A00760307 /* ComplexPolishOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexPolishOperator.swift; sourceTree = "<group>"; };
+		6F57F4991ED8953A00760307 /* MyLangOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLangOperators.swift; sourceTree = "<group>"; };
+		6F57F49C1ED8A97500760307 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6F57F49E1ED8A98D00760307 /* Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		6F57F4A61ED8C77C00760307 /* TokenCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenCollection.swift; sourceTree = "<group>"; };
+		6F57F4A81ED8C8DF00760307 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		6F57F4AA1ED8CE8E00760307 /* LexemeFactoryMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LexemeFactoryMethod.swift; sourceTree = "<group>"; };
+		6F57F4AF1ED8FD1200760307 /* TokenExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenExtensions.swift; sourceTree = "<group>"; };
+		6F57F4B21EDA0B4800760307 /* ReversePolishNotationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePolishNotationParser.swift; sourceTree = "<group>"; };
+		6F57F4B41EDA0C1200760307 /* IfElseExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IfElseExpressionParser.swift; sourceTree = "<group>"; };
+		6F57F4B61EDA2E7000760307 /* MyTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTranslator.swift; sourceTree = "<group>"; };
+		6F57F4BA1EDA567200760307 /* Token Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Token Table.storyboard"; sourceTree = "<group>"; };
+		6F57F4BC1EDA596700760307 /* AllTokensViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTokensViewController.swift; sourceTree = "<group>"; };
+		6F57F4BE1EDADA7F00760307 /* MarkKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkKeeper.swift; sourceTree = "<group>"; };
+		6F57F4C01EDAE13600760307 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		6F5955D61ED19E82000B8C21 /* ParsingTableAccesible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingTableAccesible.swift; sourceTree = "<group>"; };
+		6F5955D81ED19F02000B8C21 /* ParsingTableGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingTableGenerator.swift; sourceTree = "<group>"; };
+		6F5955DA1ED1D555000B8C21 /* language.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = language.plist; sourceTree = "<group>"; };
+		6F5955DC1ED2FBD8000B8C21 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		6F5955E21ED30BE8000B8C21 /* MyLangLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLangLexer.swift; sourceTree = "<group>"; };
+		6F5955E41ED30D41000B8C21 /* UnknownLexeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownLexeme.swift; sourceTree = "<group>"; };
+		6F5955EA1ED36A4D000B8C21 /* Mistake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mistake.swift; sourceTree = "<group>"; };
+		6F5955EC1ED41C8D000B8C21 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		6F5955EE1ED41EA0000B8C21 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		6F5955F01ED42684000B8C21 /* Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
+		6F7150E51ED892D100EE34DB /* ReversePolishOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePolishOperator.swift; sourceTree = "<group>"; };
+		6F7825DD1EDB7B02006B6276 /* WriteParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteParser.swift; sourceTree = "<group>"; };
+		6F7825DF1EDBF9EA006B6276 /* ParserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserController.swift; sourceTree = "<group>"; };
+		6F7BC8E71ED6123000D3D801 /* ValueContainter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueContainter.swift; sourceTree = "<group>"; };
+		6F7BC8EE1ED61BCB00D3D801 /* ExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionParser.swift; sourceTree = "<group>"; };
+		6F7BC8F41ED6B28100D3D801 /* Reverse Polisch Notation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Reverse Polisch Notation.storyboard"; sourceTree = "<group>"; };
+		6F7BC8F61ED6B2A000D3D801 /* ReversePolishNotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePolishNotationViewController.swift; sourceTree = "<group>"; };
 		6F9FC4EC1ECAACEB00E04376 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		6F9FC4F11ECAB1BF00E04376 /* TokenScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenScanner.swift; sourceTree = "<group>"; };
 		6F9FC4F41ECAB20600E04376 /* ToDelimiterScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDelimiterScanner.swift; sourceTree = "<group>"; };
-		6FDCEC461ECDFCC4007C0011 /* Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
-		6FDCEC481ECDFCE3007C0011 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		6FDCEC4A1ECDFCEA007C0011 /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
-		6FDCEC4D1ECE290A007C0011 /* TokenFactoryMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenFactoryMethod.swift; sourceTree = "<group>"; };
+		6FDCEC4D1ECE290A007C0011 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
 		6FDCEC4F1ECE3472007C0011 /* TextPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextPoint.swift; sourceTree = "<group>"; };
 		6FFD5F541ECAE50100A43188 /* StringNSrangeToRangeBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringNSrangeToRangeBridge.swift; sourceTree = "<group>"; };
 		6FFD5F561ECB13BD00A43188 /* Evaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluator.swift; sourceTree = "<group>"; };
-		6FFD5F581ECB29FB00A43188 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		6FFD5F581ECB29FB00A43188 /* Lexeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lexeme.swift; sourceTree = "<group>"; };
 		6FFD5F5E1ECB43E000A43188 /* Lexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +160,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F3FC6951ED43A9F00D60296 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				6F9FC4F11ECAB1BF00E04376 /* TokenScanner.swift */,
+				6F9FC4F41ECAB20600E04376 /* ToDelimiterScanner.swift */,
+			);
+			name = Scanner;
+			sourceTree = "<group>";
+		};
+		6F3FC6961ED43AEB00D60296 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				6F57F4B11ED97C9300760307 /* Parsing Table */,
+				6F3FC6A11ED4925500D60296 /* Mistakes */,
+				6F5955DC1ED2FBD8000B8C21 /* Parser.swift */,
+				6F3FC6971ED47E5B00D60296 /* ParserSnapshot.swift */,
+				6F3FC69B1ED4825C00D60296 /* Relation.swift */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		6F3FC6A11ED4925500D60296 /* Mistakes */ = {
+			isa = PBXGroup;
+			children = (
+				6F3FC6991ED4806900D60296 /* SyntaxMistake.swift */,
+				6F3FC6A21ED4928700D60296 /* UnexpectedEndOfFile.swift */,
+			);
+			name = Mistakes;
+			sourceTree = "<group>";
+		};
+		6F3FC6A81ED4A94C00D60296 /* Mistakes */ = {
+			isa = PBXGroup;
+			children = (
+				6F3FC6A41ED4A89700D60296 /* UnknownTokenMistake.swift */,
+				6F3FC6A61ED4A92200D60296 /* RedeclaredIdentifierMistake.swift */,
+				6F3FC6A91ED4A97400D60296 /* UndeclaredIdentifierMistake.swift */,
+			);
+			name = Mistakes;
+			sourceTree = "<group>";
+		};
+		6F3FC6AB1ED4AAB300D60296 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				6F5955EC1ED41C8D000B8C21 /* Stack.swift */,
+				6F5955EE1ED41EA0000B8C21 /* Queue.swift */,
+			);
+			name = Collections;
+			sourceTree = "<group>";
+		};
 		6F40F2F01ECAA9360071C663 = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +234,10 @@
 				6F9FC4F31ECAB1D400E04376 /* Model */,
 				6F9FC4EE1ECAB0FA00E04376 /* View */,
 				6F40F3001ECAA9360071C663 /* Assets.xcassets */,
-				6F40F3021ECAA9360071C663 /* Main.storyboard */,
+				6F3FC6AC1ED4AD0E00D60296 /* Parsing Table.storyboard */,
+				6F7BC8F41ED6B28100D3D801 /* Reverse Polisch Notation.storyboard */,
+				6F3FC6B01ED4B40B00D60296 /* Main.storyboard */,
+				6F57F4BA1EDA567200760307 /* Token Table.storyboard */,
 				6F40F3051ECAA9360071C663 /* Info.plist */,
 			);
 			path = Translator;
@@ -125,13 +255,52 @@
 		6F54419D1ECC3284008D7875 /* Lexer */ = {
 			isa = PBXGroup;
 			children = (
-				6F9FC4F11ECAB1BF00E04376 /* TokenScanner.swift */,
-				6F9FC4F41ECAB20600E04376 /* ToDelimiterScanner.swift */,
+				6F3FC6951ED43A9F00D60296 /* Scanner */,
+				6FFD5F5E1ECB43E000A43188 /* Lexer.swift */,
+				6F57F4A61ED8C77C00760307 /* TokenCollection.swift */,
 				6FFD5F541ECAE50100A43188 /* StringNSrangeToRangeBridge.swift */,
 				6FFD5F561ECB13BD00A43188 /* Evaluator.swift */,
-				6FFD5F5E1ECB43E000A43188 /* Lexer.swift */,
+				6F5955E21ED30BE8000B8C21 /* MyLangLexer.swift */,
+				6F3FC6A81ED4A94C00D60296 /* Mistakes */,
 			);
 			name = Lexer;
+			sourceTree = "<group>";
+		};
+		6F57F49B1ED8954800760307 /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				6F57F4991ED8953A00760307 /* MyLangOperators.swift */,
+				6F7150E51ED892D100EE34DB /* ReversePolishOperator.swift */,
+				6F57F4951ED894F800760307 /* SimplePolishOperator.swift */,
+				6F57F4971ED8951A00760307 /* ComplexPolishOperator.swift */,
+				6F57F4B21EDA0B4800760307 /* ReversePolishNotationParser.swift */,
+			);
+			name = Operator;
+			sourceTree = "<group>";
+		};
+		6F57F4B11ED97C9300760307 /* Parsing Table */ = {
+			isa = PBXGroup;
+			children = (
+				6F57F4AF1ED8FD1200760307 /* TokenExtensions.swift */,
+				6F5955D61ED19E82000B8C21 /* ParsingTableAccesible.swift */,
+				6F55A8C81ED04F4200678C60 /* ParsingTable.swift */,
+				6F5955D81ED19F02000B8C21 /* ParsingTableGenerator.swift */,
+			);
+			name = "Parsing Table";
+			sourceTree = "<group>";
+		};
+		6F7BC8E91ED6173000D3D801 /* Reverse Polish notation */ = {
+			isa = PBXGroup;
+			children = (
+				6F57F49B1ED8954800760307 /* Operator */,
+				6F7BC8EE1ED61BCB00D3D801 /* ExpressionParser.swift */,
+				6F57F4B41EDA0C1200760307 /* IfElseExpressionParser.swift */,
+				6F57F4BE1EDADA7F00760307 /* MarkKeeper.swift */,
+				6F57F4C01EDAE13600760307 /* Transition.swift */,
+				6F7825DD1EDB7B02006B6276 /* WriteParser.swift */,
+				6F7825DF1EDBF9EA006B6276 /* ParserController.swift */,
+			);
+			name = "Reverse Polish notation";
 			sourceTree = "<group>";
 		};
 		6F9FC4EE1ECAB0FA00E04376 /* View */ = {
@@ -139,6 +308,10 @@
 			children = (
 				6F40F2FE1ECAA9360071C663 /* ViewController.swift */,
 				6F9FC4EC1ECAACEB00E04376 /* MainWindowController.swift */,
+				6F5955DA1ED1D555000B8C21 /* language.plist */,
+				6F3FC6AE1ED4B15D00D60296 /* ParsingTableViewController.swift */,
+				6F7BC8F61ED6B2A000D3D801 /* ReversePolishNotationViewController.swift */,
+				6F57F4BC1EDA596700760307 /* AllTokensViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -146,9 +319,14 @@
 		6F9FC4F31ECAB1D400E04376 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6F7BC8E91ED6173000D3D801 /* Reverse Polish notation */,
+				6F3FC6AB1ED4AAB300D60296 /* Collections */,
+				6F5955F01ED42684000B8C21 /* Translator.swift */,
+				6F5955EA1ED36A4D000B8C21 /* Mistake.swift */,
+				6F57F4B61EDA2E7000760307 /* MyTranslator.swift */,
+				6F3FC6961ED43AEB00D60296 /* Parser */,
 				6F54419D1ECC3284008D7875 /* Lexer */,
 				6FDCEC4C1ECDFD75007C0011 /* Token */,
-				6F55A8C81ED04F4200678C60 /* ParsingTable.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -156,13 +334,16 @@
 		6FDCEC4C1ECDFD75007C0011 /* Token */ = {
 			isa = PBXGroup;
 			children = (
-				6F5955D61ED19E82000B8C21 /* ParsingTableKey.swift */,
-				6FFD5F581ECB29FB00A43188 /* Token.swift */,
-				6FDCEC4D1ECE290A007C0011 /* TokenFactoryMethod.swift */,
-				6FDCEC461ECDFCC4007C0011 /* Identifier.swift */,
-				6FDCEC481ECDFCE3007C0011 /* Constant.swift */,
+				6FFD5F581ECB29FB00A43188 /* Lexeme.swift */,
 				6FDCEC4A1ECDFCEA007C0011 /* Terminal.swift */,
+				6F57F49C1ED8A97500760307 /* Constant.swift */,
+				6F57F49E1ED8A98D00760307 /* Identifier.swift */,
+				6F5955E41ED30D41000B8C21 /* UnknownLexeme.swift */,
+				6F7BC8E71ED6123000D3D801 /* ValueContainter.swift */,
+				6FDCEC4D1ECE290A007C0011 /* TokenType.swift */,
 				6FDCEC4F1ECE3472007C0011 /* TextPoint.swift */,
+				6F57F4A81ED8C8DF00760307 /* Token.swift */,
+				6F57F4AA1ED8CE8E00760307 /* LexemeFactoryMethod.swift */,
 			);
 			name = Token;
 			sourceTree = "<group>";
@@ -252,8 +433,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F7BC8F51ED6B28100D3D801 /* Reverse Polisch Notation.storyboard in Resources */,
 				6F40F3011ECAA9360071C663 /* Assets.xcassets in Resources */,
-				6F40F3041ECAA9360071C663 /* Main.storyboard in Resources */,
+				6F57F4BB1EDA567200760307 /* Token Table.storyboard in Resources */,
+				6F5955DB1ED1D555000B8C21 /* language.plist in Resources */,
+				6F3FC6AD1ED4AD0E00D60296 /* Parsing Table.storyboard in Resources */,
+				6F3FC6B11ED4B40B00D60296 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,22 +456,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F57F4B31EDA0B4800760307 /* ReversePolishNotationParser.swift in Sources */,
 				6F9FC4F51ECAB20600E04376 /* ToDelimiterScanner.swift in Sources */,
-				6FDCEC471ECDFCC4007C0011 /* Identifier.swift in Sources */,
+				6F57F4B01ED8FD1200760307 /* TokenExtensions.swift in Sources */,
+				6F5955E51ED30D41000B8C21 /* UnknownLexeme.swift in Sources */,
+				6F57F4AB1ED8CE8E00760307 /* LexemeFactoryMethod.swift in Sources */,
+				6F57F4BD1EDA596700760307 /* AllTokensViewController.swift in Sources */,
 				6FFD5F571ECB13BD00A43188 /* Evaluator.swift in Sources */,
+				6F57F4B51EDA0C1200760307 /* IfElseExpressionParser.swift in Sources */,
 				6F9FC4F21ECAB1BF00E04376 /* TokenScanner.swift in Sources */,
-				6FDCEC4E1ECE290A007C0011 /* TokenFactoryMethod.swift in Sources */,
-				6F5955D71ED19E82000B8C21 /* ParsingTableKey.swift in Sources */,
+				6FDCEC4E1ECE290A007C0011 /* TokenType.swift in Sources */,
+				6F5955D71ED19E82000B8C21 /* ParsingTableAccesible.swift in Sources */,
+				6F57F49F1ED8A98D00760307 /* Identifier.swift in Sources */,
 				6FDCEC4B1ECDFCEA007C0011 /* Terminal.swift in Sources */,
 				6F40F2FF1ECAA9360071C663 /* ViewController.swift in Sources */,
-				6FDCEC491ECDFCE3007C0011 /* Constant.swift in Sources */,
+				6F57F4C11EDAE13600760307 /* Transition.swift in Sources */,
+				6F57F4981ED8951A00760307 /* ComplexPolishOperator.swift in Sources */,
+				6F5955EB1ED36A4D000B8C21 /* Mistake.swift in Sources */,
+				6F3FC69C1ED4825C00D60296 /* Relation.swift in Sources */,
+				6F3FC6AF1ED4B15D00D60296 /* ParsingTableViewController.swift in Sources */,
 				6F55A8C91ED04F4200678C60 /* ParsingTable.swift in Sources */,
 				6FDCEC501ECE3472007C0011 /* TextPoint.swift in Sources */,
+				6F57F4A91ED8C8DF00760307 /* Token.swift in Sources */,
+				6F3FC69A1ED4806900D60296 /* SyntaxMistake.swift in Sources */,
+				6F5955F11ED42684000B8C21 /* Translator.swift in Sources */,
+				6F57F4961ED894F800760307 /* SimplePolishOperator.swift in Sources */,
+				6F3FC6981ED47E5B00D60296 /* ParserSnapshot.swift in Sources */,
+				6F7825DE1EDB7B02006B6276 /* WriteParser.swift in Sources */,
+				6F57F4A71ED8C77C00760307 /* TokenCollection.swift in Sources */,
 				6FFD5F5F1ECB43E000A43188 /* Lexer.swift in Sources */,
 				6F40F2FD1ECAA9360071C663 /* AppDelegate.swift in Sources */,
+				6F5955D91ED19F02000B8C21 /* ParsingTableGenerator.swift in Sources */,
+				6F3FC6A71ED4A92200D60296 /* RedeclaredIdentifierMistake.swift in Sources */,
+				6F5955ED1ED41C8E000B8C21 /* Stack.swift in Sources */,
+				6F5955E31ED30BE8000B8C21 /* MyLangLexer.swift in Sources */,
+				6F7BC8E81ED6123000D3D801 /* ValueContainter.swift in Sources */,
+				6F5955DD1ED2FBD8000B8C21 /* Parser.swift in Sources */,
+				6F57F4BF1EDADA7F00760307 /* MarkKeeper.swift in Sources */,
+				6F57F4B71EDA2E7000760307 /* MyTranslator.swift in Sources */,
 				6FFD5F551ECAE50100A43188 /* StringNSrangeToRangeBridge.swift in Sources */,
 				6F9FC4ED1ECAACEB00E04376 /* MainWindowController.swift in Sources */,
-				6FFD5F591ECB29FB00A43188 /* Token.swift in Sources */,
+				6F3FC6A31ED4928700D60296 /* UnexpectedEndOfFile.swift in Sources */,
+				6F7150E61ED892D100EE34DB /* ReversePolishOperator.swift in Sources */,
+				6F3FC6AA1ED4A97400D60296 /* UndeclaredIdentifierMistake.swift in Sources */,
+				6FFD5F591ECB29FB00A43188 /* Lexeme.swift in Sources */,
+				6F7BC8EF1ED61BCB00D3D801 /* ExpressionParser.swift in Sources */,
+				6F3FC6A51ED4A89700D60296 /* UnknownTokenMistake.swift in Sources */,
+				6F57F49D1ED8A97500760307 /* Constant.swift in Sources */,
+				6F57F49A1ED8953A00760307 /* MyLangOperators.swift in Sources */,
+				6F7BC8F71ED6B2A000D3D801 /* ReversePolishNotationViewController.swift in Sources */,
+				6F7825E01EDBF9EA006B6276 /* ParserController.swift in Sources */,
+				6F5955EF1ED41EA0000B8C21 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,17 +527,6 @@
 			targetProxy = 6F40F30B1ECAA9360071C663 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6F40F3021ECAA9360071C663 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6F40F3031ECAA9360071C663 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6F40F3111ECAA9360071C663 /* Debug */ = {

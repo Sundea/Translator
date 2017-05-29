@@ -1,5 +1,5 @@
 //
-//  UnknownToken.swift
+//  UnknownLexeme.swift
 //  Translator
 //
 //  Created by Dmytro Polishchuk on 5/22/17.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-class UnknownToken: Token {
-    
+class UnknownLexeme: Lexeme {
+   
 }

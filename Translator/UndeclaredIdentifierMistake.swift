@@ -11,7 +11,8 @@ import Foundation
 /// Repredents undecred Identifer
 class UndeclaredIdentifierMistake: Mistake {
     
-    override var description: String {
-        return "\(position)    \(token!)    Undeclared variable."
+    init(_ token: Token) {
+        let explanation = "Undeclared identifier `\(token.lexeme.representation)`"
+        super.init(explanation, token.position)
     }
 }

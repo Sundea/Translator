@@ -2,18 +2,19 @@
 //  Identifier.swift
 //  Translator
 //
-//  Created by Dmytro Polishchuk on 5/18/17.
+//  Created by Dmytro Polishchuk on 5/26/17.
 //  Copyright © 2017 Dmytro Polishchuk. All rights reserved.
 //
 
 import Foundation
 
-class Identifier: Token, ParsingTableToken {
+class Identifier: Lexeme, ValueAccesible {
     
-    // MARK: - ParsingTableToken
+    // MARK: - ValueAccesible
     
-    var key: String {
-        return "@Identifier"
+    var value: Int!
+    
+    func set(_ newValue: Int) {
+        value = newValue
     }
-    
 }

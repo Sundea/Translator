@@ -1,5 +1,5 @@
 //
-//  ParsingTableKey.swift
+//  ParsingTableAccesible.swift
 //  Translator
 //
 //  Created by Dmytro Polishchuk on 5/16/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ParsingTableToken {
+protocol ParsingTableAccesible {
     
-    var key: String { get }
+    var tableKey: String { get }
 }

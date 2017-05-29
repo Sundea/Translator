@@ -13,7 +13,7 @@
 			<string>&lt;declarationList1&gt;</string>
 			<string>begin</string>
 			<string>\n</string>
-			<string>/</string>
+			<string>!</string>
 			<string>&lt;operatorList1&gt;</string>
 			<string>end</string>
 		</array>
@@ -115,8 +115,12 @@
 		<array>
 			<string>if</string>
 			<string>&lt;boolExpression1&gt;</string>
+			<string>\n</string>
+			<string>!</string>
 			<string>&lt;operatorList1&gt;</string>
 			<string>else</string>
+			<string>\n</string>
+			<string>!</string>
 			<string>&lt;operatorList1&gt;</string>
 			<string>endif</string>
 		</array>

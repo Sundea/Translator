@@ -15,7 +15,7 @@ class ToDelimiterScanner: TokenScanner {
     // MARK: Static constant
     
     static let delimiterPattern = "<=|>=|==|<>|:=|,|:|-|\\+|\\*|\\/|\\^|\\(|\\)|\\[|]|>|<|\\n|\\s|\\t"
-    
+    static let escapedStrings: Set<String> = ["\n", "\t"]
     
     // MARK: Properties
     
@@ -41,11 +41,16 @@ class ToDelimiterScanner: TokenScanner {
             let result = string.substring(with: firstMatchRange)!
             
             if !shouldSkip(result) {
-                token = result
+                token = ToDelimiterScanner.escape(result)
             }
             scanLocation = NSMaxRange(firstMatchRange)
         }
+        
         return token
+    }
+    
+    class func escape(_ string: String) -> String {
+        return string == "\n" ? "\\n" : string
     }
 }
 

@@ -10,28 +10,37 @@ import Foundation
 
 class Translator {
     
-    let code: String
     let lexer: Lexer
     let parser: Parser
-    private(set) lazy var mistakes = [Mistake]()
     
-    init(_ lexer: Lexer, _ parser: Parser,_ code: String) {
+    init(_ lexer: Lexer, _ parser: Parser) {
         self.lexer = lexer
         self.parser = parser
-        self.code = code
     }
     
-    func translate() {
-        lexer.scan()
-        mistakes = lexer.mistakes
-        
-        if !mistakes.isEmpty {
-            return
-        }
     
-        let tokens = lexer.result as! [ParsingTableToken]
-        parser.input = tokens
+    func scan() -> [Mistake]? {
+        lexer.scan()
+        return lexer.mistakes
+    }
+    
+    func parse() -> [Mistake]? {
+        parser.input = lexer.result.tokens
         parser.parse()
-        mistakes.append(contentsOf: parser.mistakes)
+        let mistakes = parser.mistakes
+        return mistakes.isEmpty ? nil : mistakes
+    }
+    
+    func evaluate() {
+        
+    }
+    
+    func getProgramContent() -> [Token]? {
+        guard let startIndex = lexer.result.tokens.index(where: { $0.lexeme === OperatorPool.del } ),
+            let endIndex = lexer.result.tokens.index(where: { $0.lexeme.representation == "end"} )
+        else { return nil }
+        
+        let content = Array(lexer.result.tokens[(startIndex + 1)...(endIndex - 1)])
+        return content
     }
 }

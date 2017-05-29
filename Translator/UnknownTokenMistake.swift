@@ -10,7 +10,9 @@ import Foundation
 
 /// Repredents token, that lexer can't match to any type
 class UnknownTokenMistake: Mistake {
-    override var description: String {
-        return "\(position)    \(token!)    Unknown token."
+    
+    init(_ token: Token) {
+        let explanation = "Unknown lexeme `\(token.lexeme.representation)`"
+        super.init(explanation, token.position)
     }
 }

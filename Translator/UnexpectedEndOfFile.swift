@@ -10,7 +10,8 @@ import Foundation
 
 class UnexpectedEndOfFile: Mistake {
     
-    override var description: String {
-        return "\(position)    Unexpected end of file."
+    init(_ token: Token) {
+        let explanation = "Unexpected end of file `\(token.lexeme.representation)`"
+        super.init(explanation, token.position)
     }
 }

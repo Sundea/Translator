@@ -2,17 +2,23 @@
 //  Constant.swift
 //  Translator
 //
-//  Created by Dmytro Polishchuk on 5/18/17.
+//  Created by Dmytro Polishchuk on 5/26/17.
 //  Copyright © 2017 Dmytro Polishchuk. All rights reserved.
 //
 
 import Foundation
 
-class Constant: Token, ParsingTableToken {
+class Constant: Lexeme, ValueStorable {
     
-    // MARK: - ParsingTableToken
+    var value: Int! {
+        return Int(representation)
+    }
     
-    var key: String {
-        return "@Constant"
+    override init(_ representation: String) {
+        super.init(representation)
+    }
+    
+    init(_ value: Int) {
+        super.init(value.description)
     }
 }

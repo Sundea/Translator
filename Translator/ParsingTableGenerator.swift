@@ -60,7 +60,7 @@ class ParsingTableGenerator {
         
         guard let leftSet = lastPlus(left),
             // right is terminal
-        let rightSet = isNonTerminal(right.key) ? firstPlus(right) : [right]
+        let rightSet = isNonTerminal(right.tableKey) ? firstPlus(right) : [right]
             else { return }
         
         for left in leftSet {
@@ -94,7 +94,7 @@ class ParsingTableGenerator {
     }
     
     private func conditionPlus(_ token: Key,_ condition: (_ subrule: [String]) -> String?) -> Set<Key>? {
-        guard let rule = dict[token.key] else { return nil }
+        guard let rule = dict[token.tableKey] else { return nil }
         
         var result = Set<Key>()
         for subrule in rule {
@@ -114,10 +114,10 @@ class ParsingTableGenerator {
 }
 
 
-struct Key: ParsingTableToken, Equatable, Hashable {
+struct Key: ParsingTableAccesible, Equatable, Hashable {
     let token: String
     
-    var key: String {
+    var tableKey: String {
         return token
     }
     

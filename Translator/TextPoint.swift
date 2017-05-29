@@ -12,6 +12,8 @@ import Foundation
 /// Represents position in text
 struct TextPoint: Hashable, Equatable, CustomStringConvertible {
     
+    static let MaxPoint = TextPoint(line: Int.max, character: Int.max)
+    
     let line: Int
     let character: Int
     

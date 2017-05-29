@@ -13,7 +13,7 @@ class Evaluator {
     static let identifierPattern = "[A-Za-z]\\w*"
     static let constantPattern = "[0-9]+"
     
-    let terminals: Set<String> = ["program", "@", "var", "begin", "end", "integer", "read", "write", "if", "else", "endif", "or", "and", "not", "for", "to", "step", "do", "next", ",", ":", ":=", "-", "+", "*", "/", "^", "(", ")", "[", "]", "<", ">", "<=", ">=", "==", "<>", "\n", " ", "\t"]
+    let terminals: Set<String> = ["program", "@", "var", "begin", "end", "integer", "read", "write", "if", "else", "endif", "or", "and", "not", "for", "to", "step", "do", "next", ",", ":", ":=", "-", "+", "*", "/", "^", "(", ")", "[", "]", "<", ">", "<=", ">=", "==", "<>", "\\n", " ", "!", "\\t"]
     
     let identifierRegex: NSRegularExpression
     let constantRegex: NSRegularExpression
@@ -26,15 +26,18 @@ class Evaluator {
     
     
     
-    func evaluate(_ token: String) -> TokenType? {
-        var result: TokenType?
+    func evaluate(_ token: String) -> LexemeType? {
+        var result: LexemeType?
         
-        if isTerminal(token) {
+        switch token {
+        case _ where isTerminal(token):
             result = .terminal
-        } else if isIdentifier(token) {
+        case _ where isIdentifier(token):
             result = .identifier
-        } else if isConstant(token) {
+        case _ where isConstant(token):
             result = .constant
+        default:
+            break
         }
         
         return result
