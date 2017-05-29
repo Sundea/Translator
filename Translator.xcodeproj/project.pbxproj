@@ -51,6 +51,9 @@
 		6F7150E61ED892D100EE34DB /* ReversePolishOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7150E51ED892D100EE34DB /* ReversePolishOperator.swift */; };
 		6F7825DE1EDB7B02006B6276 /* WriteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825DD1EDB7B02006B6276 /* WriteParser.swift */; };
 		6F7825E01EDBF9EA006B6276 /* ParserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825DF1EDBF9EA006B6276 /* ParserController.swift */; };
+		6F7825E21EDC8792006B6276 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825E11EDC8792006B6276 /* Label.swift */; };
+		6F7825E41EDC87C2006B6276 /* ReversePolishElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825E31EDC87C2006B6276 /* ReversePolishElement.swift */; };
+		6F7825E61EDC8E6F006B6276 /* Jump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825E51EDC8E6F006B6276 /* Jump.swift */; };
 		6F7BC8E81ED6123000D3D801 /* ValueContainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BC8E71ED6123000D3D801 /* ValueContainter.swift */; };
 		6F7BC8EF1ED61BCB00D3D801 /* ExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BC8EE1ED61BCB00D3D801 /* ExpressionParser.swift */; };
 		6F7BC8F51ED6B28100D3D801 /* Reverse Polisch Notation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F7BC8F41ED6B28100D3D801 /* Reverse Polisch Notation.storyboard */; };
@@ -126,6 +129,9 @@
 		6F7150E51ED892D100EE34DB /* ReversePolishOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePolishOperator.swift; sourceTree = "<group>"; };
 		6F7825DD1EDB7B02006B6276 /* WriteParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteParser.swift; sourceTree = "<group>"; };
 		6F7825DF1EDBF9EA006B6276 /* ParserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserController.swift; sourceTree = "<group>"; };
+		6F7825E11EDC8792006B6276 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		6F7825E31EDC87C2006B6276 /* ReversePolishElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePolishElement.swift; sourceTree = "<group>"; };
+		6F7825E51EDC8E6F006B6276 /* Jump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jump.swift; sourceTree = "<group>"; };
 		6F7BC8E71ED6123000D3D801 /* ValueContainter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueContainter.swift; sourceTree = "<group>"; };
 		6F7BC8EE1ED61BCB00D3D801 /* ExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionParser.swift; sourceTree = "<group>"; };
 		6F7BC8F41ED6B28100D3D801 /* Reverse Polisch Notation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Reverse Polisch Notation.storyboard"; sourceTree = "<group>"; };
@@ -299,6 +305,9 @@
 				6F57F4C01EDAE13600760307 /* Transition.swift */,
 				6F7825DD1EDB7B02006B6276 /* WriteParser.swift */,
 				6F7825DF1EDBF9EA006B6276 /* ParserController.swift */,
+				6F7825E11EDC8792006B6276 /* Label.swift */,
+				6F7825E31EDC87C2006B6276 /* ReversePolishElement.swift */,
+				6F7825E51EDC8E6F006B6276 /* Jump.swift */,
 			);
 			name = "Reverse Polish notation";
 			sourceTree = "<group>";
@@ -459,6 +468,7 @@
 				6F57F4B31EDA0B4800760307 /* ReversePolishNotationParser.swift in Sources */,
 				6F9FC4F51ECAB20600E04376 /* ToDelimiterScanner.swift in Sources */,
 				6F57F4B01ED8FD1200760307 /* TokenExtensions.swift in Sources */,
+				6F7825E61EDC8E6F006B6276 /* Jump.swift in Sources */,
 				6F5955E51ED30D41000B8C21 /* UnknownLexeme.swift in Sources */,
 				6F57F4AB1ED8CE8E00760307 /* LexemeFactoryMethod.swift in Sources */,
 				6F57F4BD1EDA596700760307 /* AllTokensViewController.swift in Sources */,
@@ -480,6 +490,7 @@
 				6F57F4A91ED8C8DF00760307 /* Token.swift in Sources */,
 				6F3FC69A1ED4806900D60296 /* SyntaxMistake.swift in Sources */,
 				6F5955F11ED42684000B8C21 /* Translator.swift in Sources */,
+				6F7825E21EDC8792006B6276 /* Label.swift in Sources */,
 				6F57F4961ED894F800760307 /* SimplePolishOperator.swift in Sources */,
 				6F3FC6981ED47E5B00D60296 /* ParserSnapshot.swift in Sources */,
 				6F7825DE1EDB7B02006B6276 /* WriteParser.swift in Sources */,
@@ -488,6 +499,7 @@
 				6F40F2FD1ECAA9360071C663 /* AppDelegate.swift in Sources */,
 				6F5955D91ED19F02000B8C21 /* ParsingTableGenerator.swift in Sources */,
 				6F3FC6A71ED4A92200D60296 /* RedeclaredIdentifierMistake.swift in Sources */,
+				6F7825E41EDC87C2006B6276 /* ReversePolishElement.swift in Sources */,
 				6F5955ED1ED41C8E000B8C21 /* Stack.swift in Sources */,
 				6F5955E31ED30BE8000B8C21 /* MyLangLexer.swift in Sources */,
 				6F7BC8E81ED6123000D3D801 /* ValueContainter.swift in Sources */,

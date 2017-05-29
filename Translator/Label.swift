@@ -8,27 +8,26 @@
 
 import Foundation
 
-struct Label: ReversePolishElement, CustomStringConvertible {
+class Label: ReversePolishElement, CustomStringConvertible {
     
     /// Mark index
     let index: Int
     
-    /// Command that mark points to
-    var commands: [ReversePolishElement]
+    /// Index in reverse polish notation array which to jump
+    var rpnIndex: Int!
     
     
     // MARK: - Lifecycle
     
-    init(_ commands: [ReversePolishElement]) {
-        self.index = Mark.nextIndex()
-        self.commands = commands
+    init() {
+        self.index = Label.nextIndex()
     }
     
     
     // MARK: - ReversePolishElement
     
     var representation: String {
-        return description + ":" + commands.reduce("") { result, next in "\(result) \(next)" }
+        return description + ":"
     }
     
     
