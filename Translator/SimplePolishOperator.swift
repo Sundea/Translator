@@ -28,3 +28,11 @@ class SimplePolishOperator: Terminal, ReversePolishOperator {
         super.init(representation)
     }
 }
+
+
+// MARK: - ReversePolishElement
+extension SimplePolishOperator: ReversePolishElement{
+    var stringValue: String {
+        return rpn ?? representation
+    }
+}
