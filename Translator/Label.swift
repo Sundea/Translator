@@ -43,7 +43,7 @@ class Label: ReversePolishElement, CustomStringConvertible {
 // MARK: - Static
 extension Label {
     
-    fileprivate static var count = 1
+    fileprivate static var count = 0
     
     
     /// Returns next index
