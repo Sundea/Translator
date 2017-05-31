@@ -32,12 +32,9 @@
 		6F57F4AB1ED8CE8E00760307 /* LexemeFactoryMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4AA1ED8CE8E00760307 /* LexemeFactoryMethod.swift */; };
 		6F57F4B01ED8FD1200760307 /* TokenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4AF1ED8FD1200760307 /* TokenExtensions.swift */; };
 		6F57F4B31EDA0B4800760307 /* ReversePolishNotationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4B21EDA0B4800760307 /* ReversePolishNotationParser.swift */; };
-		6F57F4B51EDA0C1200760307 /* IfElseExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4B41EDA0C1200760307 /* IfElseExpressionParser.swift */; };
 		6F57F4B71EDA2E7000760307 /* MyTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4B61EDA2E7000760307 /* MyTranslator.swift */; };
 		6F57F4BB1EDA567200760307 /* Token Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F57F4BA1EDA567200760307 /* Token Table.storyboard */; };
 		6F57F4BD1EDA596700760307 /* AllTokensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4BC1EDA596700760307 /* AllTokensViewController.swift */; };
-		6F57F4BF1EDADA7F00760307 /* MarkKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4BE1EDADA7F00760307 /* MarkKeeper.swift */; };
-		6F57F4C11EDAE13600760307 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57F4C01EDAE13600760307 /* Transition.swift */; };
 		6F5955D71ED19E82000B8C21 /* ParsingTableAccesible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955D61ED19E82000B8C21 /* ParsingTableAccesible.swift */; };
 		6F5955D91ED19F02000B8C21 /* ParsingTableGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955D81ED19F02000B8C21 /* ParsingTableGenerator.swift */; };
 		6F5955DB1ED1D555000B8C21 /* language.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F5955DA1ED1D555000B8C21 /* language.plist */; };
@@ -50,10 +47,13 @@
 		6F5955F11ED42684000B8C21 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5955F01ED42684000B8C21 /* Translator.swift */; };
 		6F7150E61ED892D100EE34DB /* ReversePolishOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7150E51ED892D100EE34DB /* ReversePolishOperator.swift */; };
 		6F7825DE1EDB7B02006B6276 /* WriteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825DD1EDB7B02006B6276 /* WriteParser.swift */; };
-		6F7825E01EDBF9EA006B6276 /* ParserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825DF1EDBF9EA006B6276 /* ParserController.swift */; };
 		6F7825E21EDC8792006B6276 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825E11EDC8792006B6276 /* Label.swift */; };
 		6F7825E41EDC87C2006B6276 /* ReversePolishElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825E31EDC87C2006B6276 /* ReversePolishElement.swift */; };
 		6F7825E61EDC8E6F006B6276 /* Jump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825E51EDC8E6F006B6276 /* Jump.swift */; };
+		6F7825E91EDC94FB006B6276 /* RPNParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825E81EDC94FB006B6276 /* RPNParser.swift */; };
+		6F7825EB1EDC95CF006B6276 /* RPNSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825EA1EDC95CF006B6276 /* RPNSnapshot.swift */; };
+		6F7825ED1EDC97B4006B6276 /* RPNConditionalParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825EC1EDC97B4006B6276 /* RPNConditionalParser.swift */; };
+		6F7825EF1EDC9ECB006B6276 /* RPNExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7825EE1EDC9ECB006B6276 /* RPNExpressionParser.swift */; };
 		6F7BC8E81ED6123000D3D801 /* ValueContainter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BC8E71ED6123000D3D801 /* ValueContainter.swift */; };
 		6F7BC8EF1ED61BCB00D3D801 /* ExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BC8EE1ED61BCB00D3D801 /* ExpressionParser.swift */; };
 		6F7BC8F51ED6B28100D3D801 /* Reverse Polisch Notation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F7BC8F41ED6B28100D3D801 /* Reverse Polisch Notation.storyboard */; };
@@ -61,6 +61,10 @@
 		6F9FC4ED1ECAACEB00E04376 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FC4EC1ECAACEB00E04376 /* MainWindowController.swift */; };
 		6F9FC4F21ECAB1BF00E04376 /* TokenScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FC4F11ECAB1BF00E04376 /* TokenScanner.swift */; };
 		6F9FC4F51ECAB20600E04376 /* ToDelimiterScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FC4F41ECAB20600E04376 /* ToDelimiterScanner.swift */; };
+		6FA208961EDCB93F00F11396 /* RPNLabelKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA208951EDCB93F00F11396 /* RPNLabelKeeper.swift */; };
+		6FA208981EDD058600F11396 /* RPNLoopParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA208971EDD058600F11396 /* RPNLoopParser.swift */; };
+		6FA2089A1EDD06AA00F11396 /* WorkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA208991EDD06AA00F11396 /* WorkLabel.swift */; };
+		6FCD3A231EDE0567005CA5BE /* RPNParserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD3A221EDE0567005CA5BE /* RPNParserController.swift */; };
 		6FDCEC4B1ECDFCEA007C0011 /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC4A1ECDFCEA007C0011 /* Terminal.swift */; };
 		6FDCEC4E1ECE290A007C0011 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC4D1ECE290A007C0011 /* TokenType.swift */; };
 		6FDCEC501ECE3472007C0011 /* TextPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDCEC4F1ECE3472007C0011 /* TextPoint.swift */; };
@@ -110,12 +114,9 @@
 		6F57F4AA1ED8CE8E00760307 /* LexemeFactoryMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LexemeFactoryMethod.swift; sourceTree = "<group>"; };
 		6F57F4AF1ED8FD1200760307 /* TokenExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenExtensions.swift; sourceTree = "<group>"; };
 		6F57F4B21EDA0B4800760307 /* ReversePolishNotationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePolishNotationParser.swift; sourceTree = "<group>"; };
-		6F57F4B41EDA0C1200760307 /* IfElseExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IfElseExpressionParser.swift; sourceTree = "<group>"; };
 		6F57F4B61EDA2E7000760307 /* MyTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTranslator.swift; sourceTree = "<group>"; };
 		6F57F4BA1EDA567200760307 /* Token Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Token Table.storyboard"; sourceTree = "<group>"; };
 		6F57F4BC1EDA596700760307 /* AllTokensViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTokensViewController.swift; sourceTree = "<group>"; };
-		6F57F4BE1EDADA7F00760307 /* MarkKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkKeeper.swift; sourceTree = "<group>"; };
-		6F57F4C01EDAE13600760307 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		6F5955D61ED19E82000B8C21 /* ParsingTableAccesible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingTableAccesible.swift; sourceTree = "<group>"; };
 		6F5955D81ED19F02000B8C21 /* ParsingTableGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingTableGenerator.swift; sourceTree = "<group>"; };
 		6F5955DA1ED1D555000B8C21 /* language.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = language.plist; sourceTree = "<group>"; };
@@ -128,10 +129,13 @@
 		6F5955F01ED42684000B8C21 /* Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		6F7150E51ED892D100EE34DB /* ReversePolishOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePolishOperator.swift; sourceTree = "<group>"; };
 		6F7825DD1EDB7B02006B6276 /* WriteParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteParser.swift; sourceTree = "<group>"; };
-		6F7825DF1EDBF9EA006B6276 /* ParserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserController.swift; sourceTree = "<group>"; };
 		6F7825E11EDC8792006B6276 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		6F7825E31EDC87C2006B6276 /* ReversePolishElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePolishElement.swift; sourceTree = "<group>"; };
 		6F7825E51EDC8E6F006B6276 /* Jump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jump.swift; sourceTree = "<group>"; };
+		6F7825E81EDC94FB006B6276 /* RPNParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPNParser.swift; sourceTree = "<group>"; };
+		6F7825EA1EDC95CF006B6276 /* RPNSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPNSnapshot.swift; sourceTree = "<group>"; };
+		6F7825EC1EDC97B4006B6276 /* RPNConditionalParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPNConditionalParser.swift; sourceTree = "<group>"; };
+		6F7825EE1EDC9ECB006B6276 /* RPNExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPNExpressionParser.swift; sourceTree = "<group>"; };
 		6F7BC8E71ED6123000D3D801 /* ValueContainter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueContainter.swift; sourceTree = "<group>"; };
 		6F7BC8EE1ED61BCB00D3D801 /* ExpressionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionParser.swift; sourceTree = "<group>"; };
 		6F7BC8F41ED6B28100D3D801 /* Reverse Polisch Notation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Reverse Polisch Notation.storyboard"; sourceTree = "<group>"; };
@@ -139,6 +143,10 @@
 		6F9FC4EC1ECAACEB00E04376 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		6F9FC4F11ECAB1BF00E04376 /* TokenScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenScanner.swift; sourceTree = "<group>"; };
 		6F9FC4F41ECAB20600E04376 /* ToDelimiterScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDelimiterScanner.swift; sourceTree = "<group>"; };
+		6FA208951EDCB93F00F11396 /* RPNLabelKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPNLabelKeeper.swift; sourceTree = "<group>"; };
+		6FA208971EDD058600F11396 /* RPNLoopParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPNLoopParser.swift; sourceTree = "<group>"; };
+		6FA208991EDD06AA00F11396 /* WorkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkLabel.swift; sourceTree = "<group>"; };
+		6FCD3A221EDE0567005CA5BE /* RPNParserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPNParserController.swift; sourceTree = "<group>"; };
 		6FDCEC4A1ECDFCEA007C0011 /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 		6FDCEC4D1ECE290A007C0011 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
 		6FDCEC4F1ECE3472007C0011 /* TextPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextPoint.swift; sourceTree = "<group>"; };
@@ -295,19 +303,31 @@
 			name = "Parsing Table";
 			sourceTree = "<group>";
 		};
+		6F7825E71EDC920B006B6276 /* RPN */ = {
+			isa = PBXGroup;
+			children = (
+				6F7825E11EDC8792006B6276 /* Label.swift */,
+				6FA208991EDD06AA00F11396 /* WorkLabel.swift */,
+				6F7825E31EDC87C2006B6276 /* ReversePolishElement.swift */,
+				6F7825E51EDC8E6F006B6276 /* Jump.swift */,
+				6F7825E81EDC94FB006B6276 /* RPNParser.swift */,
+				6F7825EA1EDC95CF006B6276 /* RPNSnapshot.swift */,
+				6F7825EC1EDC97B4006B6276 /* RPNConditionalParser.swift */,
+				6F7825EE1EDC9ECB006B6276 /* RPNExpressionParser.swift */,
+				6FA208951EDCB93F00F11396 /* RPNLabelKeeper.swift */,
+				6FA208971EDD058600F11396 /* RPNLoopParser.swift */,
+				6FCD3A221EDE0567005CA5BE /* RPNParserController.swift */,
+			);
+			name = RPN;
+			sourceTree = "<group>";
+		};
 		6F7BC8E91ED6173000D3D801 /* Reverse Polish notation */ = {
 			isa = PBXGroup;
 			children = (
 				6F57F49B1ED8954800760307 /* Operator */,
 				6F7BC8EE1ED61BCB00D3D801 /* ExpressionParser.swift */,
-				6F57F4B41EDA0C1200760307 /* IfElseExpressionParser.swift */,
-				6F57F4BE1EDADA7F00760307 /* MarkKeeper.swift */,
-				6F57F4C01EDAE13600760307 /* Transition.swift */,
 				6F7825DD1EDB7B02006B6276 /* WriteParser.swift */,
-				6F7825DF1EDBF9EA006B6276 /* ParserController.swift */,
-				6F7825E11EDC8792006B6276 /* Label.swift */,
-				6F7825E31EDC87C2006B6276 /* ReversePolishElement.swift */,
-				6F7825E51EDC8E6F006B6276 /* Jump.swift */,
+				6F7825E71EDC920B006B6276 /* RPN */,
 			);
 			name = "Reverse Polish notation";
 			sourceTree = "<group>";
@@ -466,21 +486,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F57F4B31EDA0B4800760307 /* ReversePolishNotationParser.swift in Sources */,
+				6F7825EF1EDC9ECB006B6276 /* RPNExpressionParser.swift in Sources */,
 				6F9FC4F51ECAB20600E04376 /* ToDelimiterScanner.swift in Sources */,
 				6F57F4B01ED8FD1200760307 /* TokenExtensions.swift in Sources */,
 				6F7825E61EDC8E6F006B6276 /* Jump.swift in Sources */,
+				6FCD3A231EDE0567005CA5BE /* RPNParserController.swift in Sources */,
 				6F5955E51ED30D41000B8C21 /* UnknownLexeme.swift in Sources */,
 				6F57F4AB1ED8CE8E00760307 /* LexemeFactoryMethod.swift in Sources */,
 				6F57F4BD1EDA596700760307 /* AllTokensViewController.swift in Sources */,
 				6FFD5F571ECB13BD00A43188 /* Evaluator.swift in Sources */,
-				6F57F4B51EDA0C1200760307 /* IfElseExpressionParser.swift in Sources */,
 				6F9FC4F21ECAB1BF00E04376 /* TokenScanner.swift in Sources */,
 				6FDCEC4E1ECE290A007C0011 /* TokenType.swift in Sources */,
 				6F5955D71ED19E82000B8C21 /* ParsingTableAccesible.swift in Sources */,
+				6F7825EB1EDC95CF006B6276 /* RPNSnapshot.swift in Sources */,
 				6F57F49F1ED8A98D00760307 /* Identifier.swift in Sources */,
 				6FDCEC4B1ECDFCEA007C0011 /* Terminal.swift in Sources */,
+				6FA208961EDCB93F00F11396 /* RPNLabelKeeper.swift in Sources */,
 				6F40F2FF1ECAA9360071C663 /* ViewController.swift in Sources */,
-				6F57F4C11EDAE13600760307 /* Transition.swift in Sources */,
 				6F57F4981ED8951A00760307 /* ComplexPolishOperator.swift in Sources */,
 				6F5955EB1ED36A4D000B8C21 /* Mistake.swift in Sources */,
 				6F3FC69C1ED4825C00D60296 /* Relation.swift in Sources */,
@@ -495,6 +517,7 @@
 				6F3FC6981ED47E5B00D60296 /* ParserSnapshot.swift in Sources */,
 				6F7825DE1EDB7B02006B6276 /* WriteParser.swift in Sources */,
 				6F57F4A71ED8C77C00760307 /* TokenCollection.swift in Sources */,
+				6FA208981EDD058600F11396 /* RPNLoopParser.swift in Sources */,
 				6FFD5F5F1ECB43E000A43188 /* Lexer.swift in Sources */,
 				6F40F2FD1ECAA9360071C663 /* AppDelegate.swift in Sources */,
 				6F5955D91ED19F02000B8C21 /* ParsingTableGenerator.swift in Sources */,
@@ -504,7 +527,7 @@
 				6F5955E31ED30BE8000B8C21 /* MyLangLexer.swift in Sources */,
 				6F7BC8E81ED6123000D3D801 /* ValueContainter.swift in Sources */,
 				6F5955DD1ED2FBD8000B8C21 /* Parser.swift in Sources */,
-				6F57F4BF1EDADA7F00760307 /* MarkKeeper.swift in Sources */,
+				6FA2089A1EDD06AA00F11396 /* WorkLabel.swift in Sources */,
 				6F57F4B71EDA2E7000760307 /* MyTranslator.swift in Sources */,
 				6FFD5F551ECAE50100A43188 /* StringNSrangeToRangeBridge.swift in Sources */,
 				6F9FC4ED1ECAACEB00E04376 /* MainWindowController.swift in Sources */,
@@ -513,11 +536,12 @@
 				6F3FC6AA1ED4A97400D60296 /* UndeclaredIdentifierMistake.swift in Sources */,
 				6FFD5F591ECB29FB00A43188 /* Lexeme.swift in Sources */,
 				6F7BC8EF1ED61BCB00D3D801 /* ExpressionParser.swift in Sources */,
+				6F7825ED1EDC97B4006B6276 /* RPNConditionalParser.swift in Sources */,
 				6F3FC6A51ED4A89700D60296 /* UnknownTokenMistake.swift in Sources */,
 				6F57F49D1ED8A97500760307 /* Constant.swift in Sources */,
+				6F7825E91EDC94FB006B6276 /* RPNParser.swift in Sources */,
 				6F57F49A1ED8953A00760307 /* MyLangOperators.swift in Sources */,
 				6F7BC8F71ED6B2A000D3D801 /* ReversePolishNotationViewController.swift in Sources */,
-				6F7825E01EDBF9EA006B6276 /* ParserController.swift in Sources */,
 				6F5955EF1ED41EA0000B8C21 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

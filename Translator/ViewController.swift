@@ -45,7 +45,7 @@ class ViewController: NSViewController {
     // MARK: - Propperties
     
     var translator: Translator!
-    var parser: ReversePolishNotationParser!
+    var parser: RPNParser!
     
     var parsingTable: ParsingTable {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("test.json")
@@ -125,8 +125,8 @@ extension ViewController {
             } else {
                 NotificationCenter.default.post(name: .successfulTranslation, object: nil)
                 var input = Queue<Token>(translator.getProgramContent()!)
-                parser = ParserController(&input)
-//                parser.parse()
+                parser = RPNParserController(&input)
+                let _ = parser.parse()
                 NotificationCenter.default.post(name: .parser, object: nil)
             }
         } else {
@@ -182,9 +182,9 @@ extension ViewController {
     
     
     
-    func readVariable() -> String  {
+    func readVariable(_ name: String) -> String  {
         let alert = NSAlert()
-        alert.messageText = "Input values"
+        alert.messageText = "Input `\(name)` value"
         alert.addButton(withTitle: "OK")
         let textField = NSTextField(frame: NSMakeRect(0, 0, 200, 24))
         textField.stringValue = ""

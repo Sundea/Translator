@@ -15,9 +15,11 @@ class RPNConditionpalParser: RPNParser {
     
     var type: JumpType = .falseCondition
     
-    override var lastLexeme: Lexeme {
-        return OperatorPool.endif
+    override init(_ input: inout Queue<Token>) {
+        super.init(&input)
+        self.lastLexeme = OperatorPool.endif
     }
+    
     
     override func customAppend(_ operation: SimplePolishOperator) -> Bool {
         if operation === OperatorPool.elseKeyword {

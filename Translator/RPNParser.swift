@@ -32,6 +32,7 @@ class RPNParser {
     
     init(_ input: inout Queue<Token>) {
         self.input = input
+        self.lastLexeme = OperatorPool.newLine
     }
     
     
@@ -55,12 +56,12 @@ class RPNParser {
                 }
                 snapshot()
             }
-            if let nestedParser = nestedParser() {
+            if let nestedParser = RPNParser.parser(for: &input) {
                 nestedParserWillWork()
                 nestedParser.parse()
                 merge(nestedParser)
                 nestedParserDidWork()
-                while let nextNestedParser = self.nestedParser() {
+                while let nextNestedParser = RPNParser.parser(for: &input) {
                     nextNestedParser.parse()
                     merge(nextNestedParser)
                 }
@@ -70,6 +71,7 @@ class RPNParser {
         magazineWillBecomeEmpty()
         popAll(to: nil)
         snapshot()
+        tempTranslate()
         print(output)
         return true
     }
@@ -116,14 +118,18 @@ class RPNParser {
         }
     }
     
+    
+    static let regex = try! NSRegularExpression(pattern: "(read|write) \\((\\s*,\\s*\\S+\\s*)+\\)")
+    
     func snapshot() {
-        let inputString = input.array.reduce("") { result, element in
+        var inputString = input.array.reduce("") { result, element in
             if element.lexeme != OperatorPool.newLine {
                 return "\(result) \(element.lexeme.representation)"
             } else {
                 return result
             }
         }
+        inputString = RPNParser.regex.stringByReplacingMatches(in: inputString, range: inputString.range, withTemplate: "")
         let resultString = output.reduce("") { result, element in "\(result) \(element.stringValue)" }
         let stackString = magazine.array.reduce("") { result, op in "\(result) \(op.stringValue)" }
         let snapshot = RPNSnaphot.init(inputString, stackString, resultString)
@@ -132,9 +138,7 @@ class RPNParser {
     
     
     /// Flag to stop the parsing cycle
-    var lastLexeme: Lexeme {
-        return OperatorPool.newLine
-    }
+    var lastLexeme: Lexeme
     
     
     func replace(_ operation: SimplePolishOperator, at position: TextPoint) -> SimplePolishOperator {
@@ -157,8 +161,12 @@ class RPNParser {
         
     }
     
+    func tempTranslate() {
+        
+    }
     
-    func nestedParser() -> RPNParser? {
+    
+    class func parser(for input: inout Queue<Token>) -> RPNParser? {
         var result: RPNParser?
         
         if let front = input.front?.lexeme {
@@ -170,6 +178,14 @@ class RPNParser {
                     result = RPNExpressionParser(&savedInput)
                 }
                 input = savedInput
+            case let forStatement where forStatement == OperatorPool.forKeyword:
+                result = RPNLoopParser(&input)
+            case let ifStatement where ifStatement == OperatorPool.ifKeyword:
+                result = RPNConditionpalParser(&input)
+            case let writeStatement where writeStatement == OperatorPool.write:
+                result = RPNWriteParser(&input)
+            case let readStatement where readStatement == OperatorPool.read:
+                result = RPNReadParser(&input)
             default:
                 result = nil
             }

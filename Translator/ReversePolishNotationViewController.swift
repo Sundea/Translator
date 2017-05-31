@@ -12,11 +12,11 @@ class ReversePolishNotationViewController: NSViewController, NSTableViewDataSour
 
     @IBOutlet weak var polishResult: NSTextField!
     
-    var parsingSnaphots: [ExpressionParserSnapshot]! {
+    var parsingSnaphots: [RPNSnaphot]! {
         didSet {
             self.table.reloadData()
             if let snapshot = parsingSnaphots.last {
-                polishResult.stringValue = snapshot.reversePolish
+                polishResult.stringValue = snapshot.output
             }
         }
     }
@@ -49,9 +49,9 @@ class ReversePolishNotationViewController: NSViewController, NSTableViewDataSour
         case "Count":
             stringValue = row.description
         case "InputStream":
-            stringValue = snapshot.inputStream
+            stringValue = snapshot.input
         case "ReversePolish":
-            stringValue = snapshot.reversePolish
+            stringValue = snapshot.output
         default:
             break
         }

@@ -104,9 +104,9 @@
 			<string>@Identifier</string>
 			<string>:=</string>
 			<string>&lt;expression1&gt;</string>
-			<string>to</string>
-			<string>&lt;expression1&gt;</string>
 			<string>step</string>
+			<string>&lt;expression1&gt;</string>
+			<string>to</string>
 			<string>&lt;expression1&gt;</string>
 			<string>do</string>
 			<string>&lt;operatorList1&gt;</string>
