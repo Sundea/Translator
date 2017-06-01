@@ -26,6 +26,13 @@ class RPNConditionpalParser: RPNParser {
             popAll(to: OperatorPool.ifKeyword)
             return true
         }
+        if operation === OperatorPool.closeBracket {
+            while let pop = magazine.pop(), pop != OperatorPool.openBracket {
+                output.append(pop)
+            }
+            return true
+        }
+        
         return false
     }
     
