@@ -10,11 +10,25 @@ import Foundation
 
 class RPNExpressionParser: RPNParser {
     
+    var tokens: [Token]
+    
+    override init(_ input: inout Queue<Token>) {
+        self.tokens = input.array
+        super.init(&input)
+    }
+    
+    
     override func replace(_ operation: SimplePolishOperator, at position: TextPoint) -> SimplePolishOperator {
         var result = operation
         
-        if operation === OperatorPool.minus, let top = magazine.top, top == OperatorPool.assignValue {
-            result = OperatorPool.unaryMinus
+        if operation === OperatorPool.minus, let token = tokens.first(where: { $0.position == position }) {
+            if let index = tokens.index(of: token) {
+                let previndex = tokens.index(before: index)
+                let prev = tokens[previndex]
+                if prev.lexeme == OperatorPool.assignValue || prev.lexeme == OperatorPool.openParenthesis {
+                    result = OperatorPool.unaryMinus
+                }
+            }
         }
         
         return result
