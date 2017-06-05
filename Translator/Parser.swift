@@ -14,6 +14,7 @@ class Parser {
     
     private lazy var stack = Stack<ParsingTableAccesible>()
     private var inputStream: Queue<ParsingTableAccesible>!
+    lazy var polish = [ReversePolishElement]()
     var input: [Token]! {
         didSet {
             prepare()
@@ -39,11 +40,22 @@ class Parser {
     }
     
     func parse() {
-    
+        var flag = false
         while inputStream.count > 1 || stack.count > 2  {
             if let input = inputStream.front, input.tableKey != parsingTable.startEndToken.tableKey {
                 if let relation = parsingTable[stack.top!, input] {
-                    makeSnapshot(stack, relation, inputStream)
+                    makeSnapshot(stack, relation, inputStream, polish)
+                    if let key = stack.top?.tableKey {
+                        if key == ":=" || key == ")" {
+                            flag = true
+                        } else if key == "write" || key == "read"{
+                            flag = false
+                        }
+                    }
+                    if flag && (input.tableKey == "@Identifier" || input.tableKey == "@Constant") {
+                        let value = input as! Token
+                        polish.append(value.lexeme as! ReversePolishElement)
+                    }
                     if relation != .moreThan  {
                         stack.push(input)
                         let _ = inputStream.dequeue()
@@ -73,13 +85,13 @@ class Parser {
         if let last = snapshots.last {
             let added = last.inputStreamDescription.trimmingCharacters(in:CharacterSet(charactersIn: "#"))
             let stack = last.stackDescription + added
-            let snapshot = ParserSnapshot(stack, Relation.moreThan.description, "#")
+            let snapshot = ParserSnapshot(stack, Relation.moreThan.description, "#", polish.reduce("") { result, element in "\(result) \(element.stringValue)" })
             snapshots.append(snapshot)
         }
         
         
         if let top = stack.top, top.tableKey != "<root>" {
-            if let last = input.last as? Token {
+            if let last = input.last {
                 mistakes.append(UnexpectedEndOfFile(last))
             }
         }
@@ -89,12 +101,35 @@ class Parser {
         var ruleCandidate = [String]()
         var isMinimized = false
         while !stack.isEmpty && stack.top?.tableKey != "<root>" {
+            let prevStask = stack
             let previous = stack.pop()!
             ruleCandidate.append(previous.tableKey)
             
             if let next = stack.top {
                 if let relation = parsingTable.value(for: next, previous), relation == .lessThan {
-                    if let minimized = parsingTable.nonTerminal(for: ruleCandidate.reversed()) {
+                    let reversed: [String] =  ruleCandidate.reversed()
+                    if let minimized = parsingTable.nonTerminal(for: reversed) {
+                        print(minimized.tableKey)
+                        if ruleIsEqualTo(["<multiplier>", "^", "<firstExpression>"], to: reversed) {
+                            polish.append(OperatorPool.power)
+                            makeSpecial()
+                        } else if ruleIsEqualTo(["<term>", "/", "<multiplier1>"], to: reversed){
+                            polish.append(OperatorPool.divide)
+                            makeSpecial()
+                        } else if ruleIsEqualTo(["<term>", "*", "<multiplier1>"], to: reversed) {
+                            polish.append(OperatorPool.multiply)
+                            makeSpecial()
+                        } else if ruleIsEqualTo(["-", "<term1>"], to: reversed) {
+                            polish.append(OperatorPool.unaryMinus)
+                            makeSpecial()
+                        } else if ruleIsEqualTo(["<expression>", "-", "<term1>"], to: reversed) {
+                            polish.append(OperatorPool.minus)
+                            makeSpecial()
+                        } else if ruleIsEqualTo(["<expression>", "+", "<term1>"], to: reversed) {
+                            polish.append(OperatorPool.plus)
+                            makeSpecial()
+                        }
+                        
                         stack.push(minimized)
                         isMinimized = true
                     }
@@ -106,11 +141,22 @@ class Parser {
         return isMinimized
     }
     
-    private func makeSnapshot(_ stack: Stack<ParsingTableAccesible>, _ relation: Relation, _ inputStream: Queue<ParsingTableAccesible>) {
+    func makeSpecial() {
+        let last: ParserSnapshot = snapshots.removeLast()
+        makeSnapshot(stack, .moreThan, self.inputStream, polish)
+        let prevLast: ParserSnapshot = snapshots.removeLast()
+        let snapshot = ParserSnapshot.init(last.stackDescription, prevLast.relation, prevLast.inputStreamDescription, prevLast.rpn)
+        snapshots.append(snapshot)
+    }
+    
+    
+    
+    private func makeSnapshot(_ stack: Stack<ParsingTableAccesible>, _ relation: Relation, _ inputStream: Queue<ParsingTableAccesible>, _ polish: [ReversePolishElement]) {
         let stackDescription = description(from: stack.array)
         let relationDescription = relation.description
         let inputStreamDescription = description(from: inputStream.array)
-        let snapshot = ParserSnapshot(stackDescription, relationDescription, inputStreamDescription)
+        let rpn = polish.reduce("") { result, element in "\(result) \(element.stringValue)" }
+        let snapshot = ParserSnapshot(stackDescription, relationDescription, inputStreamDescription, rpn)
         snapshots.append(snapshot)
     }
     
@@ -123,6 +169,10 @@ class Parser {
                 return "\(result) \(next.tableKey)"
             }
         }
+    }
+    
+    private func ruleIsEqualTo(_ rule: [String], to otherRule: [String]) -> Bool {
+        return rule == otherRule
     }
 }
 

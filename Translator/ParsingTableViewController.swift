@@ -46,6 +46,8 @@ extension ParsingTableViewController: NSTableViewDelegate {
             stringValue = snapshot.inputStreamDescription
         case "Relation":
             stringValue = snapshot.relation
+        case "rpn":
+            stringValue = snapshot.rpn
         default:
             break
         }

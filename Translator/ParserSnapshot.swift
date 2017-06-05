@@ -19,17 +19,19 @@ struct ParserSnapshot: CustomStringConvertible {
     /// Text representation of the input stream
     let inputStreamDescription: String
     
+    let rpn: String
     
-    init(_ stackDescription: String, _ relation: String, _ inputStreamDescription: String) {
+    init(_ stackDescription: String, _ relation: String, _ inputStreamDescription: String, _ rpn: String) {
         self.stackDescription = stackDescription
         self.relation = relation
         self.inputStreamDescription = inputStreamDescription
+        self.rpn = rpn
     }
     
     
     // MARK: - CustomStringConvertible
     
     var description: String {
-        return "\(stackDescription) \(relation) \(inputStreamDescription)"
+        return "\(stackDescription) \(relation) \(inputStreamDescription) \(rpn)"
     }
 }

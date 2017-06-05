@@ -171,7 +171,7 @@ extension ViewController {
                 } else {
                     let first = variables.first!
                     if let con = first.lexeme as? ValueStorable, let value = con.value {
-                        printToConsole("\(value)", with: NSColor.black)
+                        printToConsole("\(first.lexeme.representation) = \(value)", with: NSColor.black)
                     } else {
                         printToConsole("\(first.position)    Variable `\(first.lexeme.representation)` not initialized yet", with: NSColor.red)
                     }
