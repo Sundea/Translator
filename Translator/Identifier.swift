@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Identifier: Lexeme, ValueAccesible {
+class Identifier: Lexeme, ValueAccesible, ReversePolishElement {
     
     // MARK: - ValueAccesible
     
@@ -17,12 +17,6 @@ class Identifier: Lexeme, ValueAccesible {
     func set(_ newValue: Int) {
         value = newValue
     }
-}
-
-
-
-// MARK: - ReversePolishElement
-extension Identifier: ReversePolishElement {
     
     var stringValue: String {
         return self.representation

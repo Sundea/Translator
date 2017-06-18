@@ -10,66 +10,76 @@ import Foundation
 
 class RPNConditionpalParser: RPNParser {
     
-    var label1: Label!
-    var label2: Label!
+    var m1: Label!
+    var m2: Label!
+    var tokens: [Token]
     
     var type: JumpType = .falseCondition
     
     override init(_ input: inout Queue<Token>) {
+        self.tokens = input.array
         super.init(&input)
         self.lastLexeme = OperatorPool.endif
     }
     
     
     override func customAppend(_ operation: SimplePolishOperator) -> Bool {
-        if operation === OperatorPool.elseKeyword {
-            popAll(to: OperatorPool.ifKeyword)
-            return true
-        }
-        if operation === OperatorPool.closeBracket {
+        var result = false
+        
+        switch operation {
+        case OperatorPool.closeBracket:
             while let pop = magazine.pop(), pop != OperatorPool.openBracket {
                 output.append(pop)
             }
-            return true
-        }
-        
-        return false
-    }
-    
-    override func nestedParserWillWork() {
-        popAll(to: OperatorPool.ifKeyword)
-        
-        if let pop = magazine.pop() {
-            var keeper: RPNLabelKeeper
-            
-            switch pop {
-            case let k as RPNLabelKeeper:
-                keeper = k
-            default:
-                keeper = RPNLabelKeeper(pop.representation, pop.stackPriority, pop.comparePriority)
-            }
-            let jump = Jump(type, Label())
-            output.append(jump)
-            
+        return true
+        case OperatorPool.then:
+            popAll(to: OperatorPool.ifKeyword)
+            let jump = Jump(.falseCondition, Label())
+            let ifKey = magazine.pop()!
+            let keeper = RPNLabelKeeper(ifKey.representation, ifKey.stackPriority, ifKey.comparePriority, ifKey.rpn)
             keeper.labels.append(jump.label)
             magazine.push(keeper)
-            
-            if type == .unconditional {
-                labels[0].rpnIndex = output.count + 2
-                output.append(labels.first!)
-                type = .falseCondition
-            } else {
-                type = .unconditional
-            }
-            labels.append(jump.label)
-            snapshot()
+            output.append(jump)
+            result = true
+        case OperatorPool.elseKeyword:
+            popAll(to: OperatorPool.ifKeyword)
+            let jump = Jump(.unconditional, Label())
+            let keeper = magazine.pop()! as! RPNLabelKeeper
+            keeper.labels.append(jump.label)
+            magazine.push(keeper)
+            output.append(jump)
+            output.append(keeper.labels.first!)
+            result = true
+        default:
+            break
         }
+        
+        return result
     }
     
     override func magazineWillBecomeEmpty() {
-        output.append(labels[1])
-        labels[1].rpnIndex = output.count
-        magazine = Stack<SimplePolishOperator>()
+        let ifKey = magazine.pop()! as! RPNLabelKeeper
+        output.append(ifKey.labels.last!)
+        snapshots.removeLast()
+        
+//        labels[1].rpnIndex = output.count
+    }
+    
+    
+    override func replace(_ operation: SimplePolishOperator, at position: TextPoint) -> SimplePolishOperator {
+        var result = operation
+        
+        if operation === OperatorPool.minus, let token = tokens.first(where: { $0.position == position }) {
+            if let index = tokens.index(of: token) {
+                let previndex = tokens.index(before: index)
+                let prev = tokens[previndex]
+                if prev.lexeme is Terminal {
+                    result = OperatorPool.unaryMinus
+                }
+            }
+        }
+        
+        return result
     }
 }
 

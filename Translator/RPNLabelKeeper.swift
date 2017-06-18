@@ -12,7 +12,7 @@ class RPNLabelKeeper: ComplexPolishOperator {
     lazy var labels = [Label]()
     
     override var stringValue: String {
-        let labelsStingValue = labels.reduce("") { result, next in "\(result)\(next)" }
+        let labelsStingValue = labels.reduce("") { result, next in "\(result) \(next)" }
         return super.stringValue + labelsStingValue
     }
 }

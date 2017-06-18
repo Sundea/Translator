@@ -13,6 +13,7 @@ class RPNParserController: RPNParser {
     override func parse() -> Bool {
         WorkLabel.setIndexToZero()
         Label.setIndexToZero()
+        snapshot()
         repeat {
             if let nestedParser = RPNParser.parser(for: &input) {
                 nestedParser.parse()
@@ -22,6 +23,12 @@ class RPNParserController: RPNParser {
             }
         } while input.front != nil
         
-        return true
+        return evaluate()
+//        return true
+    }
+    
+    func evaluate() -> Bool {
+        let evaluator = RPNEvaluator(output)
+        return evaluator.evaluate()
     }
 }

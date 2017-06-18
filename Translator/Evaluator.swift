@@ -13,7 +13,7 @@ class Evaluator {
     static let identifierPattern = "[A-Za-z]\\w*"
     static let constantPattern = "[0-9]+"
     
-    let terminals: Set<String> = ["program", "@", "var", "begin", "end", "integer", "read", "write", "if", "else", "endif", "or", "and", "not", "for", "to", "step", "do", "next", ",", ":", ":=", "-", "+", "*", "/", "^", "(", ")", "[", "]", "<", ">", "<=", ">=", "==", "<>", "\\n", " ", "!", "\\t"]
+    let terminals: Set<String> = ["program", "@", "var", "begin", "end", "integer", "read", "write", "if", "then", "else", "endif", "or", "and", "not", "for", "to", "step", "do", "next", ",", ":", ":=", "-", "+", "*", "/", "^", "(", ")", "[", "]", "<", ">", "<=", ">=", "==", "<>", "\\n", " ", "!", "\\t"]
     
     let identifierRegex: NSRegularExpression
     let constantRegex: NSRegularExpression

@@ -42,7 +42,6 @@ class RPNParser {
     ///
     /// - Returns: true if succed; otherwise - false
     func parse() -> Bool {
-        snapshot()
         
         while let token = input.dequeue(), token.lexeme != lastLexeme {
             if appendAsValue(of: token) {
@@ -71,8 +70,6 @@ class RPNParser {
         magazineWillBecomeEmpty()
         popAll(to: nil)
         snapshot()
-        tempTranslate()
-        print(output)
         return true
     }
     
@@ -120,6 +117,7 @@ class RPNParser {
     
     
     static let regex = try! NSRegularExpression(pattern: "(read|write) \\((\\s*,\\s*\\S+\\s*)+\\)")
+    static let readWrite = try! NSRegularExpression(pattern: "\\S+ (write|read)")
     
     func snapshot() {
         var inputString = input.array.reduce("") { result, element in
@@ -130,7 +128,8 @@ class RPNParser {
             }
         }
         inputString = RPNParser.regex.stringByReplacingMatches(in: inputString, range: inputString.range, withTemplate: "")
-        let resultString = output.reduce("") { result, element in "\(result) \(element.stringValue)" }
+        var resultString = output.reduce("") { result, element in "\(result) \(element.stringValue)" }
+        resultString = RPNParser.readWrite.stringByReplacingMatches(in: resultString, range: resultString.range, withTemplate: "")
         let stackString = magazine.array.reduce("") { result, op in "\(result) \(op.stringValue)" }
         let snapshot = RPNSnaphot.init(inputString, stackString, resultString)
         snapshots.append(snapshot)

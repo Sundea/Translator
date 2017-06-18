@@ -115,6 +115,7 @@
 		<array>
 			<string>if</string>
 			<string>&lt;boolExpression1&gt;</string>
+			<string>then</string>
 			<string>\n</string>
 			<string>!</string>
 			<string>&lt;operatorList1&gt;</string>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Label: ReversePolishElement, CustomStringConvertible {
+class Label: ReversePolishElement, CustomStringConvertible, Equatable {
     
     /// Mark index
     let index: Int
@@ -35,6 +35,10 @@ class Label: ReversePolishElement, CustomStringConvertible {
     
     var description: String {
         return "m" + index.description
+    }
+    
+    static func ==(lhs: Label, rhs: Label) -> Bool {
+        return lhs.index == rhs.index
     }
 }
 

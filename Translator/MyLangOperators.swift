@@ -16,11 +16,12 @@ struct OperatorPool {
     static let begin = Terminal("begin")
     static let end = Terminal("end")
     static let integer = Terminal("integer")
-    static let read = Terminal("read")
-    static let write = Terminal("write")
+    static let read = SimplePolishOperator("read", 0)
+    static let write = SimplePolishOperator("write", 0)
     
     static let del = Terminal("!")
     static let ifKeyword = ComplexPolishOperator("if", 0, 10, "if")
+    static let then = SimplePolishOperator("then", 1)
     static let elseKeyword = SimplePolishOperator("else", 1)
     static let endif = Terminal("endif")
     static let forKeyword = ComplexPolishOperator("for", 0, 10, "for")
@@ -52,7 +53,6 @@ struct OperatorPool {
     static let divide = SimplePolishOperator("/", 8, "/")
     static let power = SimplePolishOperator("^", 9, "^")
     
-    
-    static let pool: Set<Terminal> = [program, endProgram, varKeyword, begin, end, integer, read, write,ifKeyword, elseKeyword, endif, forKeyword, to, step, doKeyword, next, virgule, colon, openBracket,closeBracket, moreThan, lessThen, moreOrEqualThan, lessOrEqualThan, equal, newLine, openParenthesis, closeParenthesis, assignValue, or, and, not, notEqual, plus, minus, unaryMinus, multiply, divide, power, del]
+    static let pool: Set<Terminal> = [program, endProgram, varKeyword, begin, end, integer, read, write, ifKeyword, then, elseKeyword, endif, forKeyword, to, step, doKeyword, next, virgule, colon, openBracket,closeBracket, moreThan, lessThen, moreOrEqualThan, lessOrEqualThan, equal, newLine, openParenthesis, closeParenthesis, assignValue, or, and, not, notEqual, plus, minus, unaryMinus, multiply, divide, power, del]
 
 }

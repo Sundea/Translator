@@ -17,21 +17,23 @@ class RPNLoopParser: RPNParser {
     var loop: Int!
     var loopLabel: Identifier!
     var isNeededSubparser = false
-    
+    var tokens: [Token]
+
     
     override init(_ input: inout Queue<Token>) {
+        tokens = input.array
         super.init(&input)
         self.lastLexeme = OperatorPool.next
     }
 
     
     override func parse() -> Bool {
-        snapshot()
         
         while let token = input.dequeue(), token.lexeme != lastLexeme {
             if appendAsValue(of: token) {
                 snapshot()
             } else if var operation = token.lexeme as? SimplePolishOperator {
+                operation = replace(operation, at: token.position)
                 if operation == OperatorPool.forKeyword {
                     label1 = Label()
                     label2 = Label()
@@ -82,10 +84,10 @@ class RPNLoopParser: RPNParser {
             }
         case OperatorPool.step:
             popAll(to: OperatorPool.forKeyword)
-            workLabel1 = Identifier("r1")
-            workLabel2 = Identifier("r2")
+            workLabel1 = WorkLabel()
+            workLabel2 = WorkLabel()
             output.append(workLabel1)
-            output.append(loopLabel)
+            output.append(Constant(1))
             output.append(OperatorPool.assignValue)
             output.append(label1)
             output.append(workLabel2)
@@ -119,9 +121,37 @@ class RPNLoopParser: RPNParser {
             output.append(Jump(.falseCondition, label3))
             isNeededSubparser = true
             return true
+        case OperatorPool.closeParenthesis:
+                while let pop = magazine.pop(), pop != OperatorPool.openParenthesis {
+                    output.append(pop)
+                }
+            return true
         default:
             break
         }
         return false
+    }
+    
+    override func replace(_ operation: SimplePolishOperator, at position: TextPoint) -> SimplePolishOperator {
+        var result = operation
+        
+        if operation === OperatorPool.minus, let token = tokens.first(where: { $0.position == position }) {
+            if let index = tokens.index(of: token) {
+                let previndex = tokens.index(before: index)
+                let prev = tokens[previndex]
+                if prev.lexeme == OperatorPool.assignValue || prev.lexeme == OperatorPool.openParenthesis {
+                    result = OperatorPool.unaryMinus
+                }
+            }
+        }
+        
+        return result
+    }
+    
+    
+    override func magazineWillBecomeEmpty() {
+        snapshots.removeLast()
+        
+        //        labels[1].rpnIndex = output.count
     }
 }

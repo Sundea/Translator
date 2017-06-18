@@ -160,22 +160,8 @@ extension ViewController {
     
     func writeVariable(_ notification: Notification) {
         if notification.name == .writeToConsole {
-            if let variables = notification.userInfo?["tokens"] as? [Token] {
-                if variables.count > 1 {
-                    var representation = ""
-                    for variable in variables {
-                        let con = variable.lexeme as! ValueStorable
-                        representation.append("\(con.value!) ")
-                    }
-                    printToConsole(representation, with: NSColor.black)
-                } else {
-                    let first = variables.first!
-                    if let con = first.lexeme as? ValueStorable, let value = con.value {
-                        printToConsole("\(first.lexeme.representation) = \(value)", with: NSColor.black)
-                    } else {
-                        printToConsole("\(first.position)    Variable `\(first.lexeme.representation)` not initialized yet", with: NSColor.red)
-                    }
-                }
+            if let variable = notification.userInfo?["tokens"] as? ValueStorable {
+                printToConsole("\((variable as! Lexeme).representation) := \(variable.value!) ", with: NSColor.black)
             }
         }
     }

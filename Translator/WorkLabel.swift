@@ -8,34 +8,14 @@
 
 import Foundation
 
-class WorkLabel: ReversePolishElement, CustomStringConvertible {
+class WorkLabel: Identifier {
     
-    /// Mark index
-    let index: Int
-    
-    /// Index in reverse polish notation array which to jump
-    var flag: Int!
-    
-    
-    // MARK: - Lifecycle
-    
-    init(_ flag: Int) {
-        self.index = WorkLabel.nextIndex()
-        self.flag = flag
+    init() {
+        super.init("r" + WorkLabel.nextIndex().description)
     }
     
-    
-    // MARK: - ReversePolishElement
-    
-    var stringValue: String {
-        return description
-    }
-    
-    
-    // MARK: - CustomStringConvertible
-    
-    var description: String {
-        return "r" + index.description
+    override var stringValue: String {
+        return representation
     }
 }
 
