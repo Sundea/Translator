@@ -48,7 +48,7 @@ class ViewController: NSViewController {
     var parser: RPNParser!
     
     var parsingTable: ParsingTable {
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("test.json")
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("parsingTable.json")
         
         let readData = try! Data.init(contentsOf: fileURL)
         let dict = try! JSONSerialization.jsonObject(with: readData) as! [String: Any]

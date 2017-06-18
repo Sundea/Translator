@@ -63,19 +63,14 @@ class Parser {
                         let _ = minimize()
                     }
                 } else {
-//                    if !minimize() {
                         let nextLexeme = input as! Token
                         let index = self.input.index { key in
-                            if let token = key as? Token {
-                                return token == nextLexeme
-                            }
-                            return false
+                            return key == nextLexeme
                         }
                         let prev = self.input[self.input.index(before: index!)]
                         let mistake = SyntaxMistake(prev, nextLexeme)
                         mistakes.append(mistake)
                         return
-//                    }
                 }
             } else {
                 let _ = minimize()
@@ -101,7 +96,6 @@ class Parser {
         var ruleCandidate = [String]()
         var isMinimized = false
         while !stack.isEmpty && stack.top?.tableKey != "<root>" {
-            let prevStask = stack
             let previous = stack.pop()!
             ruleCandidate.append(previous.tableKey)
             

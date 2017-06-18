@@ -28,7 +28,7 @@ class RPNEvaluator  {
         self.iterator = input.makeIterator()
         var magazineElement: ReversePolishElement?
         
-        while var rpnElement = iterator.next() {
+        while let rpnElement = iterator.next() {
             magazineElement = rpnElement
             if let operation = rpnElement as? SimplePolishOperator {
                 
@@ -46,8 +46,7 @@ class RPNEvaluator  {
                     
                     var value = magazine.pop() as! ValueStorable
                     value = Constant(value.value > 0 ? 0 : 1)
-                    magazineElement = value as! ReversePolishElement
-                    
+                    magazineElement = value as? ReversePolishElement
                 } else {
                     let right = magazine.pop() as! ValueStorable
                     var left = magazine.pop() as! ValueStorable
